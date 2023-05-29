@@ -2,16 +2,17 @@
     <aside class="bg-neutral-600 w-72 text-gray-200 ">
         <div>
             <h5 class="text-base font-bold p-3 pb-0">MAIN CATEGORY</h5>
+            <hr class="my-2 text-gray-300">
             <ul>
-                <li class="hover:bg-neutral-700 py-1 px-3  flex justify-start items-center">
-                    <a href="#" class="py-2 hover:text-white">
+                <li class="flex justify-start items-center">
+                    <a href="#" class="py-2 hover:text-white hover:bg-neutral-700 px-3 w-full ">
                         <i class='bx bxs-dashboard mr-3'></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
-                <li class="hover:bg-neutral-700 py-1 px-3 group ">
-                    <a href="#" class="py-2 hover:text-white flex justify-start items-center">
+                <li class="cursor-pointer" appDropdown>
+                    <a class="py-2 px-3 hover:text-white flex justify-start items-center hover:bg-neutral-700 ">
                         <i class='bx bx-notepad mr-3'></i>
                         <span>Classes</span>
                         <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
@@ -19,21 +20,24 @@
                     </a>
                     <ul class="pt-2 hidden group-hover:block delay-150">
                         <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/add-class" class="py-2 hover:text-white flex justify-start items-center">
+                            <a routerLink="/add-class"
+                                class="py-2 hover:text-white hover:bg-neutral-700 flex justify-start items-center pl-4">
                                 <i class='bx bxs-bookmark mr-3'></i>
                                 <span>Add Class</span>
                             </a>
                         </li>
                         <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/manage-class" class="py-2 hover:text-white flex justify-start items-center">
+                            <a routerLink="/manage-class"
+                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
                                 <i class='bx bxs-cog mr-3'></i>
                                 <span>Manage Classes</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="hover:bg-neutral-700 py-1 px-3 group divide-y-[1px]">
-                    <a href="#" class="py-2 hover:text-white flex justify-start items-center">
+
+                <li class=" cursor-pointer" appDropdown>
+                    <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
                         <i class='bx bx-book-open mr-3'></i>
                         <span>Subjects</span>
                         <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
@@ -41,49 +45,51 @@
                     </a>
                     <ul class="pt-2 hidden group-hover:block delay-150">
                         <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/add-subject" class="py-2 hover:text-white flex justify-start items-center">
+                            <a routerLink="/add-subject"
+                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
                                 <i class='bx bxs-bookmark mr-3'></i>
                                 <span>Add Subject</span>
                             </a>
                         </li>
                         <li class="pl-5 transition ease-in-out delay-500 ">
                             <a routerLink="/manage-subjects"
-                                class="py-2 hover:text-white flex justify-start items-center">
+                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
                                 <i class='bx bxs-category mr-3'></i>
                                 <span>Manage Subjects</span>
                             </a>
                         </li>
                         <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/add-sub-comb" class="py-2 hover:text-white flex justify-start items-center">
+                            <a routerLink="/add-sub-comb"
+                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
                                 <i class='bx bxs-bookmark mr-3'></i>
                                 <span>Add Subject Combination</span>
                             </a>
                         </li>
                         <li class="pl-5 transition ease-in-out delay-500 ">
                             <a routerLink="/manage-sub-comb"
-                                class="py-2 hover:text-white flex justify-start items-center">
+                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
                                 <i class='bx bxs-category mr-3'></i>
                                 <span>Manage Subjects Combination</span>
                             </a>
                         </li>
                         <li class="pl-5 transition ease-in-out delay-500 ">
                             <a routerLink="/add-department"
-                                class="py-2 hover:text-white flex justify-start items-center">
+                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
                                 <i class='bx bxs-bookmark mr-3'></i>
                                 <span>Add Department</span>
                             </a>
                         </li>
                         <li class="pl-5 transition ease-in-out delay-500 ">
                             <a routerLink="/manage-departments"
-                                class="py-2 hover:text-white flex justify-start items-center">
+                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
                                 <i class='bx bxs-category mr-3'></i>
                                 <span>Manage Departments</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="hover:bg-neutral-700 py-1 px-3 group ">
-                    <a href="#" class="py-2 hover:text-white flex justify-start items-center">
+                <li class=" cursor-pointer" appDropdown>
+                    <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
                         <i class="bx bxs-user mr-2"></i>
                         <span>Students</span>
                         <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
@@ -91,177 +97,46 @@
                     </a>
                     <ul class="pt-2 hidden group-hover:block delay-150">
                         <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/add-student" class="py-2 hover:text-white flex justify-start items-center">
+                            <a routerLink="/add-student"
+                                class="py-2 hover:text-white flex justify-start items-center  pl-4 hover:bg-neutral-700">
                                 <i class='bx bxs-bookmark mr-3'></i>
                                 <span>Add Student</span>
                             </a>
                         </li>
                         <li class="pl-5 transition ease-in-out delay-500 ">
                             <a routerLink="manage-students"
-                                class="py-2 hover:text-white flex justify-start items-center">
+                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
                                 <i class='bx bxs-category mr-3'></i>
                                 <span>Manage Students</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="hover:bg-neutral-700 py-1 px-3 group ">
-                    <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                        <i class='bx bxs-graduation mr-3'></i>
+                <li class="cursor-pointer" appDropdown>
+                    <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
+                        <i class="bx bxs-user mr-2"></i>
                         <span>Results</span>
                         <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
                         <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
                     </a>
                     <ul class="pt-2 hidden group-hover:block delay-150">
                         <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a href="#" class="py-2 hover:text-white flex justify-start items-center">
+                            <a href="#"
+                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
                                 <i class='bx bxl-deezer mr-2'></i>
                                 <span>Add Result</span>
                             </a>
                         </li>
                         <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a href="#" class="py-2 hover:text-white flex justify-start items-center">
+                            <a href="#"
+                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
                                 <i class='bx bxs-cog mr-3'></i>
                                 <span>Manage Results</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-
-
             </ul>
         </div>
-        <div>
-            <h5 class="text-base font-bold p-3 pb-0">APPEARANCE</h5>
-            <ul>
-                <li class="hover:bg-neutral-700 py-1 px-3  flex justify-start items-center">
-                    <a href="#" class="py-2 hover:text-white">
-                        <i class='bx bxs-dashboard mr-3'></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-
-                <li class="hover:bg-neutral-700 py-1 px-3 group ">
-                    <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                        <i class='bx bx-notepad mr-3'></i>
-                        <span>Classes</span>
-                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
-                    </a>
-                    <ul class="pt-2 hidden group-hover:block delay-150">
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                                <i class='bx bxs-bookmark mr-3'></i>
-                                <span>Add Class</span>
-                            </a>
-                        </li>
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                                <i class='bx bxs-cog mr-3'></i>
-                                <span>Manage Classes</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="hover:bg-neutral-700 py-1 px-3 group ">
-                    <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                        <i class="bx bxs-user mr-2"></i>
-                        <span>Classes</span>
-                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
-                    </a>
-                    <ul class="pt-2 hidden group-hover:block transition ease-in-out delay-700">
-                        <li class="pl-5  ">
-                            <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                                <i class='bx bxs-bookmark mr-3'></i>
-                                <span>Add Class</span>
-                            </a>
-                        </li>
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                                <i class='bx bxs-cog mr-3'></i>
-                                <span>Manage Classes</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="hover:bg-neutral-700 py-1 px-3 group divide-y-[1px]">
-                    <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                        <i class='bx bx-book-open mr-3'></i>
-                        <span>Subjects</span>
-                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
-                    </a>
-                    <ul class="pt-2 hidden group-hover:block delay-150">
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                                <i class='bx bxs-bookmark mr-3'></i>
-                                <span>Add Class</span>
-                            </a>
-                        </li>
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                                <i class='bx bxs-cog mr-3'></i>
-                                <span>Manage Classes</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="hover:bg-neutral-700 py-1 px-3 group ">
-                    <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                        <i class="bx bxs-user mr-2"></i>
-                        <span>Students</span>
-                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
-                    </a>
-                    <ul class="pt-2 hidden group-hover:block delay-150">
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                                <i class='bx bxs-bookmark mr-3'></i>
-                                <span>Add Student</span>
-                            </a>
-                        </li>
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                                <i class='bx bxs-cog mr-3'></i>
-                                <span>Manage Students</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="hover:bg-neutral-700 py-1 px-3 group ">
-                    <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                        <i class='bx bxs-graduation mr-3'></i>
-                        <span>Results</span>
-                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
-                    </a>
-                    <ul class="pt-2 hidden group-hover:block delay-150">
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                                <i class='bx bxl-deezer mr-2'></i>
-                                <span>Add Result</span>
-                            </a>
-                        </li>
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a href="#" class="py-2 hover:text-white flex justify-start items-center">
-                                <i class='bx bxs-cog mr-3'></i>
-                                <span>Manage Results</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-
-            </ul>
-        </div>
-
-
-
-
-
     </aside>
-
-    <!-- Content goes here -->
-
 </div>
