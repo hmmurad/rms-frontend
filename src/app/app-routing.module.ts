@@ -21,6 +21,7 @@ const routes: Routes = [
     path: '', component: MainComponent, children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'add-class', component: AddClassComponent },
+      { path: 'add-class/:id', component: AddClassComponent },
       { path: 'manage-class', component: ManageClassComponent },
       { path: 'add-subject', component: AddSubjectComponent },
       { path: 'manage-subjects', component: ManageSubjectsComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: 'manage-sub-comb', component: ManageSubjectsCombinationComponent },
       { path: 'add-department', component: AddDepartmentComponent },
       { path: 'manage-departments', component: ManageDepartmentsComponent },
+      { path: 'add-student', component: AddStudentComponent },
       { path: 'add-student', component: AddStudentComponent },
       { path: 'manage-students', component: ManageStudentsComponent },
     ]

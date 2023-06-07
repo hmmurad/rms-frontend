@@ -35,7 +35,7 @@
                     <div class="mt-3">
                         <table class="table table-bordered">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>#</th>
                                     <th>Class Name</th>
                                     <th>Creation Date</th>
@@ -43,11 +43,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr *ngFor="let c of classes ">
                                     <td>1</td>
-                                    <td>Class six</td>
+                                    <td>{{c.classname}}</td>
                                     <td>12/04/2023</td>
-                                    <td>Edit</td>
+                                    <td class="text-center space-x-3">
+                                        <i (click)="onEditClass(c)"
+                                            class='bx bx-edit text-indigo-600 text-xl cursor-pointer'></i>
+                                        <i (click)="delete(c)"
+                                            class='bx bx-trash text-red-700 text-xl cursor-pointer font-semibold'></i>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

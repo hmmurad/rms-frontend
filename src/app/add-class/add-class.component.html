@@ -8,7 +8,9 @@
                 <i class='bx bx-home mr-2'></i>
                 <span>Home</span>
             </a> /
-            <span>Class</span> /
+            <a routerLink="/manage-class" class="hover:font-medium hover:no-underline hover:text-gray-800">
+                <span>Class</span>
+            </a> /
             <span>Add Class</span>
         </div>
     </div>
@@ -16,20 +18,35 @@
         <div class="flex justify-center items-center">
             <div class="w-2/3 rounded-md bg-white shadow-sm py-4 px-3">
                 <h4 class="text-base leading-6 font-medium">Create Student Class</h4>
-                <form>
+                <form [formGroup]="addClassForm" (ngSubmit)="saveClass()">
                     <div>
                         <label class="form-label">Create Class</label>
-                        <input type="text" class="form-control" required aria-describedby="fieldhints">
+                        <input type="text" class="form-control" required aria-describedby="fieldhints"
+                            formControlName="classname" required>
                         <small id="fieldhints" class="form-text text-muted">
                             Eg- PGDIT, PMIT, MSC
                         </small>
+
+                        <div class="text-red-500 bg-red-200 py-2 mt-1 px-3 rounded"
+                            *ngIf="this.addClassForm.controls['classname'].touched && this.addClassForm.controls['classname'].invalid">
+                            Class name required!
+                        </div>
                     </div>
 
 
 
                     <div class="mt-4 flex justify-between items-center">
-                        <button class="btn btn-outline-success px-4 text-sm rounded-sm font-medium">Submit</button>
-                        <button class="btn btn-outline-primary px-4 text-sm rounded-sm font-medium">Manage
+                        <div class="flex gap-3">
+                            <button type="submit" [disabled]="!this.addClassForm.valid"
+                                class="btn btn-outline-success px-4 text-sm rounded-sm font-medium">{{this.editMode ?
+                                'Update' : 'Save'}}</button>
+                            <button (click)="cancel()"
+                                class="btn btn-outline-primary px-4 text-sm rounded-sm font-medium">Cancel</button>
+
+                        </div>
+
+                        <button routerLink="/manage-class"
+                            class="btn btn-outline-primary px-4 text-sm rounded-sm font-medium">Manage
                             Classes</button>
                     </div>
                 </form>
