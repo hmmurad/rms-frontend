@@ -1,0 +1,71 @@
+<div class="w-full h-screen">
+    <div class="">
+        <div class="px-4 pb-3 border-b-[1px] border-slate-200">
+            <span class="text-2xl font-semibold">Manage Students</span>
+        </div>
+        <div class="py-2 px-4 flex justify-start items-center gap-2 text-gray-400 antialiased">
+            <a routerLink="/" class="hover:font-medium hover:no-underline hover:text-gray-800">
+                <i class='bx bx-home mr-2'></i>
+                <span>Home</span>
+            </a> /
+            <a routerLink="/manage-students" class="hover:font-medium hover:no-underline hover:text-gray-800">
+                <span>Manage Students</span>
+            </a> /
+
+            <span> Student Profile</span>
+        </div>
+    </div>
+    <div class="bg-gray-100 p-4 h-screen">
+        <div class="flex justify-center items-center">
+            <div class="w-full rounded-md bg-white shadow-sm py-3 px-3" *ngIf="student">
+                <div class="mb-4 space-x-3">
+                    <button class="btn btn-outline-success px-4 text-sm rounded-sm my-3 font-medium"
+                        (click)="onEdit(student)">Edit Student</button>
+                    <button class="btn btn-outline-secondary px-4 text-sm rounded-sm my-3 font-medium"
+                        (click)="cancel()">Back</button>
+
+                </div>
+
+                <div class="flex justify-start gap-5 px-10">
+                    <div class="">
+                        <img class="" src="https://picsum.photos/200" alt="">
+                    </div>
+                    <div class="w-3/4">
+                        <h2 class="text-4xl font-semibold text-gray-700">{{student.fullname | uppercase}}</h2>
+                        <div class="flex justify-start gap-8 mt-3">
+                            <div>
+                                <ul>
+                                    <li>Student ID</li>
+                                    <li>Email</li>
+                                    <li>DOB</li>
+                                    <li>Mobile</li>
+                                    <li>Class ID</li>
+                                    <li>Department ID</li>
+                                    <li>Address</li>
+                                    <li>Status</li>
+                                    <li>Email</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="pl-5">
+                                    <li>: 23242</li>
+                                    <li>: {{student.email}}</li>
+                                    <li>: {{student.dob}}</li>
+                                    <li>: {{student.mobile}}</li>
+                                    <li>: {{student.classId }}</li>
+                                    <li>: {{student.departmentId}}</li>
+                                    <li>:{{student.address | uppercase}}</li>
+                                    <li>:{{student.status | uppercase}}</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -24,6 +24,11 @@ import { AddDepartmentComponent } from './add-department/add-department.componen
 import { ManageDepartmentsComponent } from './manage-departments/manage-departments.component';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { ManageStudentsComponent } from './manage-students/manage-students.component';
+import { StudentProfileComponent } from './student-profile/student-profile.component';
+import { AddTeacherComponent } from './add-teacher/add-teacher.component';
+import { ManageTeacherComponent } from './manage-teacher/manage-teacher.component';
+import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,11 @@ import { ManageStudentsComponent } from './manage-students/manage-students.compo
     AddDepartmentComponent,
     ManageDepartmentsComponent,
     AddStudentComponent,
-    ManageStudentsComponent
+    ManageStudentsComponent,
+    StudentProfileComponent,
+    AddTeacherComponent,
+    ManageTeacherComponent,
+    TeacherProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +61,7 @@ import { ManageStudentsComponent } from './manage-students/manage-students.compo
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    AuthModule,
 
   ],
   providers: [],

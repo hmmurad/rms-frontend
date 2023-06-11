@@ -1,3 +1,6 @@
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from '../shared/models/subject';
@@ -5,11 +8,11 @@ import { Student } from '../shared/models/student';
 import { StudentService } from '../shared/services/student.service';
 
 @Component({
-  selector: 'app-manage-students',
-  templateUrl: './manage-students.component.html',
-  styleUrls: ['./manage-students.component.scss']
+  selector: 'app-manage-teacher',
+  templateUrl: './manage-teacher.component.html',
+  styleUrls: ['./manage-teacher.component.scss']
 })
-export class ManageStudentsComponent implements OnInit {
+export class ManageTeacherComponent implements OnInit {
 
   students: Student[] = []
 

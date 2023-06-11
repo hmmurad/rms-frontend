@@ -2,6 +2,8 @@
 
 
 
+
+
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -16,11 +18,11 @@ import { Student } from '../shared/models/student';
 import { StudentService } from '../shared/services/student.service';
 
 @Component({
-  selector: 'app-add-student',
-  templateUrl: './add-student.component.html',
-  styleUrls: ['./add-student.component.scss']
+  selector: 'app-add-teacher',
+  templateUrl: './add-teacher.component.html',
+  styleUrls: ['./add-teacher.component.scss']
 })
-export class AddStudentComponent implements OnInit {
+export class AddTeacherComponent implements OnInit {
   departments: Department[] = []
   classes: Class[] = []
   addForm!: FormGroup

@@ -41,9 +41,7 @@ export class AddClassComponent implements OnInit {
 
   initForm() {
     if (this.editMode) {
-      this.addClassForm = this.fb.group({
-        classname: [this.class.classname],
-      })
+      this.addClassForm.controls['classname'].setValue(this.class.classname)
     } else {
       this.addClassForm = this.fb.group({
         classname: [],

@@ -16,7 +16,8 @@
         <div class="flex justify-center items-center">
             <div class="w-full rounded-md bg-white shadow-sm py-4 px-3">
                 <h4 class="text-base leading-6 font-medium">View Department Info</h4>
-                <button class="btn btn-outline-success px-4 text-sm rounded-sm my-3 font-medium">Create New
+                <button routerLink="/add-department"
+                    class="btn btn-outline-success px-4 text-sm rounded-sm my-3 font-medium">Create New
                     Department</button>
                 <div>
                     <div class="flex justify-between items-center">
@@ -37,20 +38,24 @@
                     <div class="mt-3">
                         <table class="table table-bordered">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>#</th>
                                     <th>Department Name</th>
                                     <th>Creation Date</th>
-                                    <th>Updation Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Class six</td>
-                                    <td>12/04/2023</td>
-                                    <td>Edit</td>
+                                <tr *ngFor="let d of departments; let i = index" class="text-center">
+                                    <td>{{i + 1}}</td>
+                                    <td>{{d.departmentname}}</td>
+                                    <td>{{d.createdAt | date}}</td>
+                                    <td class="text-center space-x-3">
+                                        <i (click)="onEdit(d)"
+                                            class='bx bx-edit text-indigo-600 text-xl cursor-pointer'></i>
+                                        <i (click)="delete(d)"
+                                            class='bx bx-trash text-red-700 text-xl cursor-pointer font-semibold'></i>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

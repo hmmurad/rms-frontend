@@ -28,7 +28,7 @@ export class ManageClassComponent implements OnInit {
   }
 
   onEditClass(data: Class) {
-    this.router.navigate(['add-class', data.id])
+    this.router.navigate(['edit-class', data.id])
   }
 
   delete(data: any) {
