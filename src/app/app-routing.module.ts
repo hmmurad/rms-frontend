@@ -18,7 +18,7 @@ import { StudentProfileComponent } from './student-profile/student-profile.compo
 import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
   {
     path: '', component: MainComponent, children: [
