@@ -1,37 +1,33 @@
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Class } from '../shared/models/class';
 import { ClassService } from '../shared/services/class.service';
-import { DepartmentService } from '../shared/services/department.service';
-import { Department } from '../shared/models/department';
 
 @Component({
-  selector: 'app-add-class',
-  templateUrl: './add-class.component.html',
-  styleUrls: ['./add-class.component.scss']
+  selector: 'app-add-result',
+  templateUrl: './add-result.component.html',
+  styleUrls: ['./add-result.component.scss']
 })
-export class AddClassComponent implements OnInit {
+export class AddResultComponent implements OnInit {
 
 
   addClassForm!: FormGroup
   editMode: boolean = false;
   class!: Class
-  departments$ = this.deptService.getAll()
   id!: number;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private classService: ClassService,
-    private deptService: DepartmentService,
     private location: Location) { }
 
   ngOnInit(): void {
     // this.id = this.route.snapshot.queryParams['id']
-
-    
-
     this.initForm()
     this.route.params.subscribe((params: Params) => {
       this.id = params['id']
@@ -52,7 +48,6 @@ export class AddClassComponent implements OnInit {
     } else {
       this.addClassForm = this.fb.group({
         classname: [],
-        departmentId: []
       })
     }
   }
@@ -65,7 +60,6 @@ export class AddClassComponent implements OnInit {
           this.class = res
           this.editMode = true
           this.addClassForm.controls['classname'].setValue(this.class.classname)
-          this.addClassForm.controls['departmentId'].setValue(this.class.departmentId)
         }
       )
     }

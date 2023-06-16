@@ -19,7 +19,7 @@
             <div class="w-2/3 rounded-md bg-white shadow-sm py-4 px-3">
                 <h4 class="text-base leading-6 font-medium">Create Student Class</h4>
                 <form [formGroup]="addClassForm" (ngSubmit)="saveClass()">
-                    <div class="mb-3">
+                    <div>
                         <label class="form-label">Create Class</label>
                         <input type="text" class="form-control" required aria-describedby="fieldhints"
                             formControlName="classname" required>
@@ -31,12 +31,6 @@
                             *ngIf="this.addClassForm.controls['classname'].touched && this.addClassForm.controls['classname'].invalid">
                             Class name required!
                         </div>
-                    </div>
-
-                    <div class="mb-5">
-                        <select class="form-select" formControlName="departmentId">
-                            <option [value]="dept.id" *ngFor="let dept of departments$ | async">{{dept.departmentname}}</option>
-                        </select>
                     </div>
 
 

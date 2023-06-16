@@ -20,9 +20,9 @@ body {
   // font-family: 'Tiro Bangla', serif;
 }
 
-input.form-control {
+input.form-control , select.form-select {
   border-radius: 0;
 }
-input.form-control:focus {
+input.form-control:focus, select.form-select:focus {
   border-color: rgb(62, 112, 62);
 }

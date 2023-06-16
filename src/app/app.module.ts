@@ -29,6 +29,8 @@ import { AddTeacherComponent } from './add-teacher/add-teacher.component';
 import { ManageTeacherComponent } from './manage-teacher/manage-teacher.component';
 import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
 import { AuthModule } from './auth/auth.module';
+import { AddResultComponent } from './add-result/add-result.component';
+import { ManageResultComponent } from './manage-result/manage-result.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { AuthModule } from './auth/auth.module';
     StudentProfileComponent,
     AddTeacherComponent,
     ManageTeacherComponent,
-    TeacherProfileComponent
+    TeacherProfileComponent,
+    AddResultComponent,
+    ManageResultComponent
   ],
   imports: [
     BrowserModule,
