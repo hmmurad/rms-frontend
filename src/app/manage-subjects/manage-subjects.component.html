@@ -48,7 +48,7 @@
                             <tbody>
                                 <tr *ngFor="let s of subjects ; let i = index ">
                                     <td>{{i + 1}}</td>
-                                    <td>{{s.subjectname}}</td>
+                                    <td>{{s.subjectname | uppercase}}</td>
                                     <td>{{s.createdAt | date}}</td>
                                     <td class="text-center space-x-3">
                                         <i (click)="onEdit(s)"

@@ -48,7 +48,7 @@
                             <tbody>
                                 <tr *ngFor="let c of classes ">
                                     <td>1</td>
-                                    <td>{{c.classname}}</td>
+                                    <td>{{c.classname | uppercase}}</td>
                                     <td>12/04/2023</td>
                                     <td class="text-center space-x-3">
                                         <i (click)="onEditClass(c)"

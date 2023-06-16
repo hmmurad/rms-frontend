@@ -55,7 +55,7 @@
                             <tbody class="text-sm">
                                 <tr *ngFor="let s of students; let i= index" class="text-center">
                                     <td>{{i+1}}</td>
-                                    <td>{{s.fullname}}</td>
+                                    <td>{{s.fullname | uppercase}}</td>
                                     <td>{{s.departmentId}}</td>
                                     <td>{{s.classId}}</td>
                                     <td>{{s.email}}</td>
