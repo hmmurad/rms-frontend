@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { Subject } from '../shared/models/subject';
 import { Student } from '../shared/models/student';
 import { StudentService } from '../shared/services/student.service';
+import { TeacherService } from '../shared/services/teacher.service';
+import { Teacher } from '../shared/models/teacher';
 
 @Component({
   selector: 'app-manage-teacher',
@@ -14,10 +16,10 @@ import { StudentService } from '../shared/services/student.service';
 })
 export class ManageTeacherComponent implements OnInit {
 
-  students: Student[] = []
+  teachers: Teacher[] = []
 
   constructor(
-    private studentService: StudentService,
+    private teacherService: TeacherService,
     private router: Router
   ) { }
 
@@ -26,27 +28,27 @@ export class ManageTeacherComponent implements OnInit {
   }
 
   getAll() {
-    this.studentService.getAll().subscribe((res) => {
-      this.students = res
+    this.teacherService.getAll().subscribe((res) => {
+      this.teachers = res
       console.log(res);
 
     })
   }
 
-  onEdit(data: Student) {
+  onEdit(data: Teacher) {
     this.router.navigate(['edit-student', data.id])
   }
 
   delete(data: any) {
-    this.studentService.delete(data.id).subscribe((res: any) => {
+    this.teacherService.delete(data.id).subscribe((res: any) => {
       window.alert('Do you want to delete?')
       console.log(res);
       this.getAll()
     })
   }
 
-  view(s: Student) {
-    this.router.navigate(['student', s.id])
+  view(s: Teacher) {
+    this.router.navigate(['teacher', s.id])
     console.log(s);
 
   }

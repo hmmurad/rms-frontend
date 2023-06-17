@@ -19,8 +19,8 @@
             <div class="w-2/3 rounded-md bg-white shadow-sm py-4 px-3">
                 <h4 class="text-base leading-6 font-medium">Create Student Class</h4>
                 <form [formGroup]="addClassForm" (ngSubmit)="saveClass()">
-                    <div class="mb-3">
-                        <label class="form-label">Create Class</label>
+                    <div class="my-3">
+                        <label class="form-label font-semibold">Create Class</label>
                         <input type="text" class="form-control" required aria-describedby="fieldhints"
                             formControlName="classname" required>
                         <small id="fieldhints" class="form-text text-muted">
@@ -34,8 +34,11 @@
                     </div>
 
                     <div class="mb-5">
+                        <label for="" class="form-label font-semibold">Department</label>
                         <select class="form-select" formControlName="departmentId">
-                            <option [value]="dept.id" *ngFor="let dept of departments$ | async">{{dept.departmentname}}</option>
+                            <option [value]="dept.id" *ngFor="let dept of departments$ | async">{{dept.departmentname |
+                                uppercase}}
+                            </option>
                         </select>
                     </div>
 

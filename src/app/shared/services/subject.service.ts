@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from '../models/subject';
 import { Observable } from 'rxjs';
@@ -7,16 +7,21 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class SubjectService {
-    url = 'http://localhost:3000/subject'
+    url = 'http://localhost:3000/subjects'
 
     constructor(private http: HttpClient) { }
 
     getAll() {
+
         return this.http.get<Subject[]>(`${this.url}`)
     }
 
     getSubjectById(id: number): Observable<Subject> {
         return this.http.get<Subject>(`${this.url}/` + id)
+    }
+    getSubjectByClassId(classId?: any): Observable<Subject> {
+        const params = new HttpParams().set('class', classId)
+        return this.http.get<Subject>(`${this.url}`, { params })
     }
 
     create(data: Subject) {

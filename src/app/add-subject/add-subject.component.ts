@@ -6,6 +6,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subject } from '../shared/models/subject';
 import { SubjectService } from '../shared/services/subject.service';
+import { ClassService } from '../shared/services/class.service';
+import { TeacherService } from '../shared/services/teacher.service';
+import { Teacher } from '../shared/models/teacher';
+import { Class } from '../shared/models/class';
 
 @Component({
   selector: 'app-add-subject',
@@ -18,11 +22,15 @@ export class AddSubjectComponent implements OnInit {
   addForm!: FormGroup
   editMode: boolean = false;
   subject!: Subject
+  teachers$ = this.teacherService.getAll()
+  class$ = this.classService.getAll()
   id!: number;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private subjectService: SubjectService,
+    private classService: ClassService,
+    private teacherService: TeacherService,
     private location: Location) { }
 
   ngOnInit(): void {
@@ -47,6 +55,8 @@ export class AddSubjectComponent implements OnInit {
     } else {
       this.addForm = this.fb.group({
         subjectname: [],
+        classId: [],
+        teacherId: []
       })
     }
   }
@@ -59,6 +69,8 @@ export class AddSubjectComponent implements OnInit {
           this.subject = res
           this.editMode = true
           this.addForm.controls['subjectname'].setValue(this.subject.subjectname)
+          this.addForm.controls['classId'].setValue(this.subject.classId)
+          this.addForm.controls['teacherId'].setValue(this.subject.teacherId)
         }
       )
     }
@@ -66,13 +78,15 @@ export class AddSubjectComponent implements OnInit {
 
   save() {
     if (this.editMode) {
-      this.updateClass()
+      this.update()
     } else {
-      this.createClass()
+      this.create()
     }
   }
 
-  createClass() {
+  create() {
+    console.log(this.addForm.value);
+
     this.subjectService.create(this.addForm.value).subscribe((res) => {
       console.log(res);
       this.addForm.reset()
@@ -80,7 +94,7 @@ export class AddSubjectComponent implements OnInit {
   }
 
 
-  updateClass() {
+  update() {
     this.subjectService.update(this.id, this.addForm.value).subscribe((res) => {
       console.log(res);
       this.addForm.reset()

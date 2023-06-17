@@ -6,7 +6,7 @@ export interface Teacher {
     address: string,
     gender: string,
     status: string,
-    dob: string,
+    doj: Date,
     departmentId: number,
     classId: number,
     createdAt?: Date
