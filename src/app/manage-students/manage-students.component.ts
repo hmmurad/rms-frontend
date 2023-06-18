@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subject } from '../shared/models/subject';
 import { Student } from '../shared/models/student';
 import { StudentService } from '../shared/services/student.service';
+import { ClassService } from '../shared/services/class.service';
 
 @Component({
   selector: 'app-manage-students',
@@ -12,9 +13,12 @@ import { StudentService } from '../shared/services/student.service';
 export class ManageStudentsComponent implements OnInit {
 
   students: Student[] = []
+  selectedClassId:any
+  classes$ = this.classService.getAll()
 
   constructor(
     private studentService: StudentService,
+    private classService: ClassService,
     private router: Router
   ) { }
 
@@ -28,6 +32,30 @@ export class ManageStudentsComponent implements OnInit {
       console.log(res);
 
     })
+  }
+
+
+
+  onchange(event: Event) {
+    this.selectedClassId = (event.target as HTMLSelectElement).value
+    this.getByClassId(this.selectedClassId)
+  }
+
+  showall() {
+    this.getAll()
+  }
+
+  
+
+
+  getByClassId(id:any) {
+    this.studentService.getByClassId(id).subscribe(
+      res => {
+        this.students = res
+        console.log(res);
+        
+      }
+    )
   }
 
   onEdit(data: Student) {
