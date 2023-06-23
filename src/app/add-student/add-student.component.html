@@ -25,6 +25,10 @@
                                 <input type="text" class="form-control" required formControlName="fullname">
                             </div>
                             <div class="mb-3">
+                                <label class="form-label font-medium">Roll</label>
+                                <input type="roll" class="form-control" required formControlName="roll">
+                            </div>
+                            <div class="mb-3">
                                 <label class="form-label font-medium">Email</label>
                                 <input type="email" class="form-control" required formControlName="email">
                             </div>
@@ -35,6 +39,14 @@
                             <div class="mb-3">
                                 <label class="form-label font-medium">Mobile</label>
                                 <input type="number" class="form-control" required formControlName="mobile">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label font-medium">Session</label>
+                                <select class="form-select" formControlName="sessionId">
+                                    <option [value]="d.id" *ngFor="let d of sessions">{{d.year}}
+                                    </option>
+
+                                </select>
                             </div>
                         </div>
                         <div class="w-1/2">

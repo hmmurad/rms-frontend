@@ -1,6 +1,7 @@
 export interface Student {
     id?: number;
     fullname: string;
+    roll: string;
     email: string,
     mobile: string,
     address: string,
@@ -9,5 +10,6 @@ export interface Student {
     dob: string,
     departmentId: number,
     classId: number,
+    sessionId: string,
     createdAt?: Date
 }

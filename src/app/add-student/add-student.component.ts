@@ -14,6 +14,8 @@ import { ClassService } from '../shared/services/class.service';
 import { DepartmentService } from '../shared/services/department.service';
 import { Student } from '../shared/models/student';
 import { StudentService } from '../shared/services/student.service';
+import { SessionService } from '../shared/services/session.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-student',
@@ -22,15 +24,17 @@ import { StudentService } from '../shared/services/student.service';
 })
 export class AddStudentComponent implements OnInit {
   departments: Department[] = []
+  sessions: any[] = []
   classes: Class[] = []
   addForm!: FormGroup
   editMode: boolean = false;
   student!: Student
   id!: number;
+  // departmentId = this.addForm.controls['departmentId'].value
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private studentService: StudentService, private classService: ClassService, private deptService: DepartmentService,
+    private studentService: StudentService, private classService: ClassService, private deptService: DepartmentService, private sessionService: SessionService,
     private location: Location) { }
 
   ngOnInit(): void {
@@ -51,14 +55,16 @@ export class AddStudentComponent implements OnInit {
   }
 
   getAll() {
-    this.classService.getAll().subscribe((res) => this.classes = res)
     this.deptService.getAll().subscribe((res) => this.departments = res)
+    this.classService.getAll().subscribe(res => this.classes = res)
+    this.sessionService.getAll().subscribe((res) => this.sessions = res)
   }
 
   initForm() {
 
     this.addForm = this.fb.group({
       fullname: [],
+      roll: [],
       email: [],
       dob: [],
       gender: [],
@@ -66,6 +72,7 @@ export class AddStudentComponent implements OnInit {
       address: [],
       departmentId: [],
       classId: [],
+      sessionId: [],
       status: ['']
     })
 
@@ -79,6 +86,7 @@ export class AddStudentComponent implements OnInit {
           this.student = res
           this.editMode = true
           this.addForm.controls['fullname'].setValue(this.student.fullname)
+          this.addForm.controls['roll'].setValue(this.student.roll)
           this.addForm.controls['email'].setValue(this.student.email)
           this.addForm.controls['gender'].setValue(this.student.gender)
           this.addForm.controls['mobile'].setValue(this.student.mobile)
@@ -86,6 +94,7 @@ export class AddStudentComponent implements OnInit {
           this.addForm.controls['address'].setValue(this.student.address)
           this.addForm.controls['departmentId'].setValue(this.student.departmentId)
           this.addForm.controls['classId'].setValue(this.student.classId)
+          this.addForm.controls['sessionId'].setValue(this.student.sessionId)
           this.addForm.controls['status'].setValue(this.student.status)
         }
       )

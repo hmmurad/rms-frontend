@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Student } from '../models/student';
@@ -17,6 +17,11 @@ export class StudentService {
 
     getById(id: number): Observable<Student> {
         return this.http.get<Student>(`${this.url}/` + id)
+    }
+
+    getStdByClassId(classId?: any): Observable<Student> {
+        const params = new HttpParams().set('class', classId)
+        return this.http.get<Student>(`${this.url}`, { params })
     }
 
     create(data: Student) {

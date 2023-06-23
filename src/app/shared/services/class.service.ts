@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Class } from '../models/class';
 import { Observable } from 'rxjs';
@@ -17,6 +17,11 @@ export class ClassService {
 
   getClassById(id: number): Observable<Class> {
     return this.http.get<Class>(`http://localhost:3000/classes/${id}`)
+  }
+
+  getClassByDepartment(id: number): Observable<Class[]> {
+    const params = new HttpParams().set('department', id)
+    return this.http.get<Class[]>(`http://localhost:3000/classes`, { params })
   }
 
   create(data: Class) {
