@@ -16,7 +16,7 @@
         <div class="flex justify-center items-center">
             <div class="w-full rounded-md bg-white shadow-sm py-4 px-3">
                 <h4 class="text-base leading-6 font-medium">View Marks Info</h4>
-                <button routerLink="/add-subject"
+                <button routerLink="/add-marks"
                     class="btn btn-outline-success px-4 text-sm rounded-sm my-3 font-medium">Create New
                     Marks</button>
                 <div>
@@ -78,10 +78,10 @@
                                     <td>{{s.tutorial}}</td>
                                     <td>{{s.written }}</td>
                                     <td>{{totalMarks }}</td>
-                                    <td>{{s.createdAt | date}}</td>
+                                    <td>{{s.createdAt | date }}</td>
                                     <td class="text-center space-x-3">
                                         <i (click)="onEdit(s)"
-                                            class='bx bx-edit text-indigo-600 text-xl cursor-pointer'></i>
+                                            class='bx bx-plus-circle text-indigo-600 text-xl cursor-pointer'></i>
                                         <i (click)="delete(s)"
                                             class='bx bx-trash text-red-700 text-xl cursor-pointer font-semibold'></i>
                                     </td>

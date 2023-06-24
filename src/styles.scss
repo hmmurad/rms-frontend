@@ -26,3 +26,6 @@ input.form-control , select.form-select {
 input.form-control:focus, select.form-select:focus {
   border-color: rgb(62, 112, 62);
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

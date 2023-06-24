@@ -33,7 +33,7 @@
                             <div class="">
                                 <label class="mb-2" for="">Exam</label>
                                 <select class="form-select">
-                                    <option value="">Teacher Name</option>
+                                    <option [value]="e.id" *ngFor="let e of exams">{{e.examname}}</option>
                                 </select>
                             </div>
                             <div class="">
@@ -95,7 +95,7 @@
                                             <i (click)="edit(s)"
                                                 class='bx bx-edit text-indigo-600 text-md cursor-pointer'></i>
                                             <i (click)="view(s)"
-                                                class='bx bx-book-open text-green-600 text-md cursor-pointer'></i>
+                                                class='bx bx-plus-circle text-green-600 text-md cursor-pointer'></i>
                                             <i (click)="delete(s)"
                                                 class='bx bx-trash text-red-700 text-md cursor-pointer font-semibold'></i>
                                         </td>

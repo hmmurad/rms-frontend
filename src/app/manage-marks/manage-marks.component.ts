@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MarksService } from '../shared/services/marks.service';
 
 @Component({
-  selector: 'app-managed-marks',
-  templateUrl: './managed-marks.component.html',
-  styleUrls: ['./managed-marks.component.scss']
+  selector: 'app-manage-marks',
+  templateUrl: './manage-marks.component.html',
+  styleUrls: ['./manage-marks.component.scss']
 })
-export class ManagedMarksComponent implements OnInit {
+export class ManageMarksComponent implements OnInit {
 
   marks: any
   totalMarks: any

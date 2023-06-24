@@ -9,6 +9,7 @@ import { ClassService } from '../shared/services/class.service';
 import { DepartmentService } from '../shared/services/department.service';
 import { Department } from '../shared/models/department';
 import { ExamService } from '../shared/services/exam.service';
+import { SessionService } from '../shared/services/session.service';
 
 @Component({
   selector: 'app-add-exam',
@@ -21,13 +22,13 @@ export class AddExamComponent implements OnInit {
   addForm!: FormGroup
   editMode: boolean = false;
   exams!: any
-  departments$ = this.deptService.getAll()
+  sessions$: any = this.sessionService.getAll()
   id!: number;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private examService: ExamService,
-    private deptService: DepartmentService,
+    private sessionService: SessionService,
     private location: Location) { }
 
   ngOnInit(): void {
@@ -39,7 +40,7 @@ export class AddExamComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.id = params['id']
     })
-    this.getClass()
+    this.getExams()
 
     if (this.id) {
       this.editMode = true
@@ -60,7 +61,7 @@ export class AddExamComponent implements OnInit {
     }
   }
 
-  getClass() {
+  getExams() {
     if (this.id !== undefined || null) {
       this.examService.get(this.id).subscribe(
         (res) => {

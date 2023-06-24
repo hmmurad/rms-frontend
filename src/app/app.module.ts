@@ -31,11 +31,14 @@ import { ManageStudentsComponent } from './manage-students/manage-students.compo
 import { ManageSubjectsCombinationComponent } from './manage-subjects-combination/manage-subjects-combination.component';
 import { ManageSubjectsComponent } from './manage-subjects/manage-subjects.component';
 import { ManageTeacherComponent } from './manage-teacher/manage-teacher.component';
-import { ManagedMarksComponent } from './managed-marks/managed-marks.component';
 import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
+import { ManageMarksComponent } from './manage-marks/manage-marks.component';
+import { AddMarksModalComponent } from './add-marks-modal/add-marks-modal.component';
+
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -63,10 +66,12 @@ import { TeacherProfileComponent } from './teacher-profile/teacher-profile.compo
     AddResultComponent,
     ManageResultComponent,
     AddMarksComponent,
-    ManagedMarksComponent,
+    ManageMarksComponent,
+    ManageClassComponent,
     AddExamComponent,
     ManageExamComponent,
-    AddSessionComponent
+    AddSessionComponent,
+    AddMarksModalComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +81,7 @@ import { TeacherProfileComponent } from './teacher-profile/teacher-profile.compo
     FormsModule,
     ReactiveFormsModule,
     AuthModule,
+    MatDialogModule
 
   ],
   providers: [],
