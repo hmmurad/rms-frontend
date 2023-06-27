@@ -3,10 +3,7 @@ import { Router } from '@angular/router';
 import { Subject } from '../shared/models/subject';
 import { Student } from '../shared/models/student';
 import { StudentService } from '../shared/services/student.service';
-<<<<<<< HEAD
-=======
 import { BehaviorSubject } from 'rxjs';
->>>>>>> master
 import { ClassService } from '../shared/services/class.service';
 
 @Component({
@@ -16,13 +13,9 @@ import { ClassService } from '../shared/services/class.service';
 })
 export class ManageStudentsComponent implements OnInit {
 
-<<<<<<< HEAD
-  students: Student[] = []
-  selectedClassId:any
-=======
   selectedStdId: any;
+  selectedClassId: any;
   students: any
->>>>>>> master
   classes$ = this.classService.getAll()
 
   constructor(
@@ -65,15 +58,7 @@ export class ManageStudentsComponent implements OnInit {
   
 
 
-  getByClassId(id:any) {
-    this.studentService.getByClassId(id).subscribe(
-      res => {
-        this.students = res
-        console.log(res);
-        
-      }
-    )
-  }
+
 
   onEdit(data: Student) {
     this.router.navigate(['edit-student', data.id])
