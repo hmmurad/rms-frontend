@@ -27,6 +27,16 @@
                             Subject name required!
                         </div>
                     </div>
+                    <div class="my-3">
+                        <label class="form-label font-medium">Subject Code</label>
+                        <input type="text" class="form-control" required aria-describedby="fieldhints"
+                            formControlName="code">
+
+                        <div class="text-red-500 bg-red-200 py-2 mt-1 px-3 rounded"
+                            *ngIf="this.addForm.controls['code'].touched && this.addForm.controls['code'].invalid">
+                            Code name required!
+                        </div>
+                    </div>
 
                     <div class="mb-3">
                         <label class="form-label font-medium">Select Class</label>

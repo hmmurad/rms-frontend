@@ -1,24 +1,24 @@
 <div class="w-full h-screen">
     <div class="">
         <div class="px-4 pb-3 border-b-[1px] border-slate-200">
-            <span class="text-2xl font-semibold">Manage Subjects</span>
+            <span class="text-2xl font-semibold">Manage Classes</span>
         </div>
         <div class="py-2 px-4 flex justify-start items-center gap-2 text-gray-400 antialiased">
             <a routerLink="/" class="hover:font-medium hover:no-underline hover:text-gray-800">
                 <i class='bx bx-home mr-2'></i>
                 <span>Home</span>
             </a> /
-            <span>Subjects</span> /
-            <span>Manage Subjects</span>
+            <span>Exams</span> /
+            <span>Manage Exams</span>
         </div>
     </div>
     <div class="bg-gray-100 p-4 h-screen">
         <div class="flex justify-center items-center">
             <div class="w-full rounded-md bg-white shadow-sm py-4 px-3">
-                <h4 class="text-base leading-6 font-medium">View Subjects Info</h4>
-                <button routerLink="/add-subject"
+                <h4 class="text-base leading-6 font-medium">View Exam Info</h4>
+                <button routerLink="/add-exam"
                     class="btn btn-outline-success px-4 text-sm rounded-sm my-3 font-medium">Create New
-                    Subject</button>
+                    Exam</button>
                 <div>
                     <div class="flex justify-between items-center">
                         <div class="flex justify-start items-center gap-2 text-sm">
@@ -31,46 +31,29 @@
                             <span>entries</span>
                         </div>
                         <div class="flex justify-start items-center gap-2 text-sm">
-                            <div class="flex justify-start items-center gap-2">
-                                <span>Search:</span>
-                                <input type="text" class="form-control  px-2 py-1">
-                            </div>
-
-                            <div class="flex justify-start items-center gap-1">
-                                <label>Sort By:</label>
-                                <select class="form-select px-2 py-1 w-20" (change)="onchangeClass($event)">
-                                    <option value=""> select</option>
-                                    <option class="text-sm" [value]="c.id" *ngFor="let c of classes$ | async">
-                                        {{c.classname | uppercase}}</option>
-                                </select>
-                            </div>
+                            <span>Search:</span>
+                            <input type="text" class="form-control px-2 py-1">
                         </div>
                     </div>
-                    <ng-container *ngIf="this.subjects?.length<=0">
-                        <p class="mt-3 font-medium text-xl text-center">
-                            No Subjects found!
-
-                        </p>
-                    </ng-container>
-                    <div class="mt-3" *ngIf="this.subjects?.length>0">
+                    <div class="mt-3">
                         <table class="table table-bordered text-center">
                             <thead>
-                                <tr>
+                                <tr class="">
                                     <th>#</th>
-                                    <th>Subject Name</th>
+                                    <th>Exam Name</th>
                                     <th>Creation Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let s of subjects; let i = index ">
+                                <tr *ngFor="let c of exams ; let i = index">
                                     <td>{{i + 1}}</td>
-                                    <td>{{s.subjectname | uppercase}}</td>
-                                    <td>{{s.createdAt | date}}</td>
+                                    <td>{{c.examname | uppercase}}</td>
+                                    <td>12/04/2023</td>
                                     <td class="text-center space-x-3">
-                                        <i (click)="onEdit(s)"
+                                        <i (click)="onEditClass(c)"
                                             class='bx bx-edit text-indigo-600 text-xl cursor-pointer'></i>
-                                        <i (click)="delete(s)"
+                                        <i (click)="delete(c)"
                                             class='bx bx-trash text-red-700 text-xl cursor-pointer font-semibold'></i>
                                     </td>
                                 </tr>

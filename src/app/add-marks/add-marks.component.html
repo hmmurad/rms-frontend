@@ -1,0 +1,115 @@
+<div class="w-full h-screen">
+    <div class="">
+        <div class="px-4 pb-3 border-b-[1px] border-slate-200">
+            <span class="text-2xl font-semibold">Add Student</span>
+        </div>
+        <div class="py-2 px-4 flex justify-start items-center gap-2 text-gray-400 antialiased">
+            <a routerLink="/" class="hover:font-medium hover:no-underline hover:text-gray-800">
+                <i class='bx bx-home mr-2'></i>
+                <span>Home</span>
+            </a> /
+            <span>Add Marks</span>
+        </div>
+    </div>
+    <div class="bg-gray-100 p-4 h-screen">
+        <div class="flex justify-center items-center">
+            <div class="w-10/12 rounded-md bg-white shadow-sm py-4 px-3">
+                <h4 class="text-2xl leading-6 font-medium mb-5">Add Marks</h4>
+                <div>
+                    <form>
+                        <div class="grid grid-cols-3 gap-3 mb-5">
+                            <div class="">
+                                <label class="mb-2" for="">Teacher Name</label>
+                                <select class="form-select">
+                                    <option value="">Teacher Name</option>
+                                </select>
+                            </div>
+                            <div class="">
+                                <label class="mb-2" for="">Subjects</label>
+                                <select class="form-select">
+                                    <option [value]="s.id" *ngFor="let s of subjects">{{s.subjectname}}</option>
+                                </select>
+                            </div>
+                            <div class="">
+                                <label class="mb-2" for="">Exam</label>
+                                <select class="form-select">
+                                    <option [value]="e.id" *ngFor="let e of exams">{{e.examname}}</option>
+                                </select>
+                            </div>
+                            <div class="">
+                                <label class="mb-2" for="">Department</label>
+                                <select class="form-select" (change)="onchangeDepartment($event)">
+                                    <option value="">Please Select department</option>
+                                    <option [value]="d.id" *ngFor="let d of department">{{d.departmentname}}</option>
+                                </select>
+                            </div>
+                            <div class="">
+                                <label class="mb-2" for="">Class</label>
+                                <select class="form-select" (change)="onchangeClass($event)">
+                                    <option value="">Please Select Class</option>
+
+                                    <option [value]="c.id" *ngFor="let c of class">{{c.classname}}</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="border-b-[1px] w-full mt-5 mb-3"></div>
+                        <h4 class="text-2xl leading-6 font-medium mb-5">Students</h4>
+
+                        <ng-container *ngIf="this.students?.length<=0">
+                            <p class="mt-3 font-medium text-xl text-center">
+                                No students found!
+
+                            </p>
+                        </ng-container>
+                        <div class="mt-10" *ngIf="this.students?.length>0">
+                            <table class="table table-bordered">
+                                <thead class="text-sm">
+                                    <tr class="text-center">
+                                        <th>#</th>
+                                        <th>Fullname</th>
+                                        <th>Roll</th>
+                                        <th>Department</th>
+                                        <th>Email</th>
+                                        <th>Date of Birth</th>
+                                        <th>Gender</th>
+                                        <th>Mobile</th>
+                                        <th>Address</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm">
+                                    <tr *ngFor="let s of students; let i= index" class="text-center">
+                                        <td>{{i+1}}</td>
+                                        <td>{{s.fullname | uppercase}}</td>
+                                        <td>{{s.roll}}</td>
+                                        <td>{{s.departmentId}}</td>
+                                        <td>{{s.email}}</td>
+                                        <td>{{s.dob | date}}</td>
+                                        <td>{{s.gender}}</td>
+                                        <td>{{s.mobile}}</td>
+                                        <td>{{s.address}}</td>
+                                        <td>{{s.status}}</td>
+                                        <td class="text-center space-x-3">
+                                            <i (click)="edit(s)"
+                                                class='bx bx-edit text-indigo-600 text-md cursor-pointer'></i>
+                                            <i (click)="view(s)"
+                                                class='bx bx-plus-circle text-green-600 text-md cursor-pointer'></i>
+                                            <i (click)="delete(s)"
+                                                class='bx bx-trash text-red-700 text-md cursor-pointer font-semibold'></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="text-center mt-2">
+                                <span>Pagination</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

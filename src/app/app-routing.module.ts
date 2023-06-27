@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddClassComponent } from './add-class/add-class.component';
 import { AddDepartmentComponent } from './add-department/add-department.component';
+import { AddExamComponent } from './add-exam/add-exam.component';
+import { AddMarksComponent } from './add-marks/add-marks.component';
 import { AddResultComponent } from './add-result/add-result.component';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { AddSubjectCombinationComponent } from './add-subject-combination/add-subject-combination.component';
@@ -11,6 +13,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainComponent } from './main/main.component';
 import { ManageClassComponent } from './manage-class/manage-class.component';
 import { ManageDepartmentsComponent } from './manage-departments/manage-departments.component';
+import { ManageExamComponent } from './manage-exam/manage-exam.component';
+import { ManageMarksComponent } from './manage-marks/manage-marks.component';
 import { ManageResultComponent } from './manage-result/manage-result.component';
 import { ManageStudentsComponent } from './manage-students/manage-students.component';
 import { ManageSubjectsCombinationComponent } from './manage-subjects-combination/manage-subjects-combination.component';
@@ -48,6 +52,11 @@ const routes: Routes = [
       { path: 'manage-teachers', component: ManageTeacherComponent },
       { path: 'add-result', component: AddResultComponent },
       { path: 'manage-results', component: ManageResultComponent },
+      { path: 'add-marks', component: AddMarksComponent },
+      { path: 'manage-marks', component: ManageMarksComponent },
+      { path: 'add-exam', component: AddExamComponent },
+      { path: 'edit-exam/:id', component: AddExamComponent },
+      { path: 'manage-exam', component: ManageExamComponent },
     ]
   }
 ];

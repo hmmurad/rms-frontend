@@ -55,6 +55,7 @@ export class AddSubjectComponent implements OnInit {
     } else {
       this.addForm = this.fb.group({
         subjectname: [],
+        code: [],
         classId: [],
         teacherId: []
       })
@@ -69,6 +70,7 @@ export class AddSubjectComponent implements OnInit {
           this.subject = res
           this.editMode = true
           this.addForm.controls['subjectname'].setValue(this.subject.subjectname)
+          this.addForm.controls['code'].setValue(this.subject.code)
           this.addForm.controls['classId'].setValue(this.subject.classId)
           this.addForm.controls['teacherId'].setValue(this.subject.teacherId)
         }
