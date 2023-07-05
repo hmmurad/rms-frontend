@@ -39,6 +39,7 @@ import { ManageMarksComponent } from './manage-marks/manage-marks.component';
 import { AddMarksModalComponent } from './add-marks-modal/add-marks-modal.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { ManageSessionComponent } from './manage-session/manage-session.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     AddExamComponent,
     ManageExamComponent,
     AddSessionComponent,
-    AddMarksModalComponent
+    AddMarksModalComponent,
+    ManageSessionComponent
   ],
   imports: [
     BrowserModule,

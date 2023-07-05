@@ -21,4 +21,12 @@ export class SessionService {
         return this.http.post<{ year: string }>(`${this.url}`, year)
     }
 
+    update(id: number, data: any) {
+        return this.http.patch(`http://localhost:3000/sessions/${id}`, data)
+      }
+    
+      delete(id: number) {
+        return this.http.delete(`http://localhost:3000/sessions/${id}`)
+      }
+
 }

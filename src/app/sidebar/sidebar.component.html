@@ -13,6 +13,31 @@
                 <li class=" cursor-pointer" appDropdown>
                     <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
                         <i class='bx bx-book-open mr-3'></i>
+                        <span>Sessions</span>
+                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
+                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
+                    </a>
+                    <ul class="pt-2 hidden group-hover:block delay-150">
+
+                        <li class="pl-5 transition ease-in-out delay-500 ">
+                            <a routerLink="/add-session"
+                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                <i class='bx bxs-bookmark mr-3'></i>
+                                <span>Add Session</span>
+                            </a>
+                        </li>
+                        <li class="pl-5 transition ease-in-out delay-500 ">
+                            <a routerLink="/manage-sessions"
+                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                <i class='bx bxs-category mr-3'></i>
+                                <span>Manage Sessions</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=" cursor-pointer" appDropdown>
+                    <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
+                        <i class='bx bx-book-open mr-3'></i>
                         <span>Department</span>
                         <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
                         <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>

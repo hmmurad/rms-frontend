@@ -1,1 +1,56 @@
-<p>add-session works!</p>
+<div class="w-full h-screen">
+    <div class="">
+        <div class="px-4 pb-3 border-b-[1px] border-slate-200">
+            <span class="text-2xl font-semibold">Add Session</span>
+        </div>
+        <div class="py-2 px-4 flex justify-start items-center gap-2 text-gray-400 antialiased">
+            <a routerLink="/" class="hover:font-medium hover:no-underline hover:text-gray-800">
+                <i class='bx bx-home mr-2'></i>
+                <span>Home</span>
+            </a> /
+            <a routerLink="/manage-sessions" class="hover:font-medium hover:no-underline hover:text-gray-800">
+                <span>Sessions</span>
+            </a> /
+            <span>Add Session</span>
+        </div>
+    </div>
+    <div class="bg-gray-100 p-4 h-screen">
+        <div class="flex justify-center items-center">
+            <div class="w-2/3 rounded-md bg-white shadow-sm py-4 px-3">
+                <h4 class="text-base leading-6 font-medium">Create Session</h4>
+                <form [formGroup]="addForm" (ngSubmit)="saveClass()">
+                    <div class="my-3">
+                        <label class="form-label font-semibold">Create Session</label>
+                        <input type="text" class="form-control" required 
+                            formControlName="year" required>
+                        <small id="fieldhints" class="form-text text-muted">
+                            Eg- PGDIT, PMIT, MSC
+                        </small>
+
+                        <div class="text-red-500 bg-red-200 py-2 mt-1 px-3 rounded"
+                            *ngIf="this.addForm.controls['year'].touched && this.addForm.controls['year'].invalid">
+                            Year is required!
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="mt-4 flex justify-between items-center">
+                        <div class="flex gap-3">
+                            <button type="submit" [disabled]="!this.addForm.valid" class="btn btn-outline-success px-4 text-sm rounded-sm font-medium">{{this.editMode ?
+                                'Update' : 'Save'}}</button>
+                            <button (click)="cancel()"
+                                class="btn btn-outline-primary px-4 text-sm rounded-sm font-medium">Cancel</button>
+
+                        </div>
+
+                        <button routerLink="/manage-sessions"
+                            class="btn btn-outline-primary px-4 text-sm rounded-sm font-medium">Manage
+                            Sessions</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

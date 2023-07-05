@@ -93,6 +93,11 @@ export class AddMarksComponent implements OnInit {
       data: s
     })
   }
+  modal() {
+    this.matDialog.open(AddMarksModalComponent, {
+      width: '80%'
+    })
+  }
   delete(s: any) { }
 
 

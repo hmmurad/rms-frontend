@@ -11,6 +11,9 @@
             <span>Add Marks</span>
         </div>
     </div>
+    <div>
+        <a class="bg-teal-300 text-white p-3 cursor-pointer" (click)="modal()">click</a>
+    </div>
     <div class="bg-gray-100 p-4 h-screen">
         <div class="flex justify-center items-center">
             <div class="w-10/12 rounded-md bg-white shadow-sm py-4 px-3">
@@ -69,13 +72,9 @@
                                         <th>#</th>
                                         <th>Fullname</th>
                                         <th>Roll</th>
-                                        <th>Department</th>
-                                        <th>Email</th>
-                                        <th>Date of Birth</th>
                                         <th>Gender</th>
                                         <th>Mobile</th>
                                         <th>Address</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -84,13 +83,9 @@
                                         <td>{{i+1}}</td>
                                         <td>{{s.fullname | uppercase}}</td>
                                         <td>{{s.roll}}</td>
-                                        <td>{{s.departmentId}}</td>
-                                        <td>{{s.email}}</td>
-                                        <td>{{s.dob | date}}</td>
                                         <td>{{s.gender}}</td>
                                         <td>{{s.mobile}}</td>
                                         <td>{{s.address}}</td>
-                                        <td>{{s.status}}</td>
                                         <td class="text-center space-x-3">
                                             <i (click)="edit(s)"
                                                 class='bx bx-edit text-indigo-600 text-md cursor-pointer'></i>

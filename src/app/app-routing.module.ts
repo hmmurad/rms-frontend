@@ -5,6 +5,7 @@ import { AddDepartmentComponent } from './add-department/add-department.componen
 import { AddExamComponent } from './add-exam/add-exam.component';
 import { AddMarksComponent } from './add-marks/add-marks.component';
 import { AddResultComponent } from './add-result/add-result.component';
+import { AddSessionComponent } from './add-session/add-session.component';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { AddSubjectCombinationComponent } from './add-subject-combination/add-subject-combination.component';
 import { AddSubjectComponent } from './add-subject/add-subject.component';
@@ -16,6 +17,7 @@ import { ManageDepartmentsComponent } from './manage-departments/manage-departme
 import { ManageExamComponent } from './manage-exam/manage-exam.component';
 import { ManageMarksComponent } from './manage-marks/manage-marks.component';
 import { ManageResultComponent } from './manage-result/manage-result.component';
+import { ManageSessionComponent } from './manage-session/manage-session.component';
 import { ManageStudentsComponent } from './manage-students/manage-students.component';
 import { ManageSubjectsCombinationComponent } from './manage-subjects-combination/manage-subjects-combination.component';
 import { ManageSubjectsComponent } from './manage-subjects/manage-subjects.component';
@@ -57,6 +59,9 @@ const routes: Routes = [
       { path: 'add-exam', component: AddExamComponent },
       { path: 'edit-exam/:id', component: AddExamComponent },
       { path: 'manage-exam', component: ManageExamComponent },
+      { path: 'add-session', component: AddSessionComponent },
+      { path: 'edit-session/:id', component: AddSessionComponent },
+      { path: 'manage-sessions', component: ManageSessionComponent },
     ]
   }
 ];
