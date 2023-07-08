@@ -1,4 +1,20 @@
+export type Role = 'admin' | 'teacher'
 export interface User {
-    email: string,
-    password: string
+    email?: string,
+    password?: string,
+    fullname?: string,
+    roles?: Role
+
 }
+export interface LoginUser {
+    email: string,
+    password: string,
+
+}
+export interface UserResponse {
+    user: User,
+    iat: any,
+    exp: any
+
+}
+

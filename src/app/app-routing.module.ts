@@ -30,7 +30,6 @@ const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
   {
     path: '', component: MainComponent, children: [
-
       { path: 'dashboard', component: DashboardComponent },
       { path: 'add-class', component: AddClassComponent },
       { path: 'edit-class/:id', component: AddClassComponent },

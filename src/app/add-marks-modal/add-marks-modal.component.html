@@ -1,57 +1,89 @@
-<div class="mt-5">
+<div class="h-auto">
     <div class="">
-        <div class="px-4 pb-3 border-b-[1px] border-slate-200">
-            <span class="text-2xl font-semibold">Student</span>
+        <div class="px-4 py-3 border-b-[1px] border-slate-200">
+            <span class="text-2xl font-semibold">Add Marks</span>
         </div>
     </div>
-    <div class=" border-b-[1px] border-slate-200 py-4 px-4">
-        <div class="grid grid-cols-2 gap-3">
-           <div>Student Name</div>
-           <div>Student Name</div>
-           <div>Student Name</div>
-           <div>Student Name</div>
+    <div class="grid grid-cols-2 gap-3 py-2 px-4">
+        <div class="">
+            <h4 class="text-xl leading-4 font-medium my-3 text-left border-b-[1px] border-slate-200 py-3">Student Info
+            </h4>
+
+            <div class="text-md font-semibold text-slate-800">{{this.data.fullname | uppercase}}</div>
+            <div class="text-sm text-slate-500"> {{this.data.roll}}</div>
+            <div class="text-sm text-slate-500"> {{subject | uppercase}}</div>
+            <div class="text-sm text-slate-500"> {{class | uppercase}}</div>
+            <div class="text-sm text-slate-500"> Department of {{department | uppercase}}</div>
         </div>
-    </div>
-    <div class=" py-2 px-4 h-screen">
-        <h4 class="text-2xl leading-6 font-medium my-3 text-center">Add Marks</h4>
-        <div>
-            <form>
-                <div class="grid grid-cols-2 gap-3 mb-5 w-2/3 mx-auto">
+        <div class="">
+            <h4 class="text-xl leading-4 font-medium my-3 text-left border-b-[1px] border-slate-200 py-3">Marks</h4>
+            <div>
+                <form [formGroup]="form" (ngSubmit)="onsubmit()">
+                    <div class="grid grid-cols-2 gap-3 mb-5">
 
-                    <div class="">
-                        <label class="mb-2" for="">Attendance</label>
-                        <input type="number" class="form-control">
-                    </div>
-                    <div class="">
-                        <label class="mb-2" for="">Tutorial</label>
-                        <input type="number" class="form-control">
+                        <div class="flex justify-between items-center gap-2">
+                            <label class="text-sm font-medium text-slate-600">Attendance</label>
+                            <input type="number" list="attendance" class="form-control text-xs w-20 "
+                                formControlName="attendance">
+                            <datalist id="attendance">
+                                <option value="Out of 10">
+                            </datalist>
+                        </div>
+                        <div class="flex justify-between items-center gap-2">
+                            <label class="text-sm font-medium text-slate-600">Tutorial</label>
+                            <input type="number" list="tutorial" class="form-control text-xs w-20"
+                                formControlName="tutorial">
+                            <datalist id="tutorial">
+                                <option value="Out of 20">
+                            </datalist>
+                        </div>
+                        <div class="flex justify-between items-center gap-2">
+                            <label class="text-sm font-medium text-slate-600">Assignment</label>
+                            <input type="number" list="assignment" class="form-control text-xs w-20"
+                                formControlName="assignment">
+                            <datalist id="assignment">
+                                <option value="Out of 20">
+                            </datalist>
+                        </div>
+                        <div class="flex justify-between items-center gap-2">
+                            <label class="text-sm font-medium text-slate-600">Written</label>
+                            <input type="number" list="written" class="form-control text-xs w-20"
+                                formControlName="written">
+                            <datalist id="written">
+                                <option value="Out of 50">
+                            </datalist>
+                        </div>
+                        <!-- <div class="">
+                            <label class="mb-2" for="">Tutorial</label>
+                            <input type="number" class="form-control">
 
-                    </div>
-                    <div class="">
-                        <label class="mb-2" for="">Assignment</label>
-                        <input type="number" class="form-control">
+                        </div>
+                        <div class="">
+                            <label class="mb-2" for="">Assignment</label>
+                            <input type="number" class="form-control">
 
-                    </div>
-                    <div class="">
-                        <label class="mb-2" for="">Written</label>
-                        <input type="number" class="form-control">
+                        </div>
+                        <div class="">
+                            <label class="mb-2" for="">Written</label>
+                            <input type="number" class="form-control">
 
+                        </div> -->
                     </div>
-                </div>
-                <div class="mt-4 flex justify-center items-center gap-3">
-                    <div class="flex gap-3">
-                        <button type="submit" 
-                            class="btn btn-outline-success px-4 text-md rounded-sm font-medium">Save</button>
-                        <button 
-                            class="btn btn-outline-warning px-4 text-md rounded-sm font-medium">Cancel</button>
-                    </div>
+                    <div class="mt-4 flex justify-center items-center gap-3 border-t-[1px] border-slate-200 py-3">
+                        <div class="flex gap-3">
+                            <button type="submit"
+                                class="btn btn-outline-success px-4 text-md rounded-sm font-medium">Save</button>
+                            <button mat-dialog-close type="button"
+                                class="btn btn-outline-warning px-4 text-md rounded-sm font-medium">Cancel</button>
+                        </div>
 
-                    <button routerLink="/manage-class"
-                        class="btn btn-outline-primary px-4 text-md rounded-sm font-medium">
-                        Manage Classes
-                    </button>
-                </div>
-            </form>
+                        <button routerLink="/manage-marks"
+                            class="btn btn-outline-primary px-4 text-md rounded-sm font-medium">
+                            Manage Marks
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

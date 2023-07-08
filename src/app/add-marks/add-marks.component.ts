@@ -23,6 +23,7 @@ export class AddMarksComponent implements OnInit {
   selectedClassId: any
   selectedSubjectId: any
   exams: any
+  selectedExamId: any
 
   constructor(
     private marksService: MarksService,
@@ -38,18 +39,26 @@ export class AddMarksComponent implements OnInit {
     this.getDepartment()
     this.getExams()
 
-    this.subjectService.getSubjectByTeacherId(this.teacherId).subscribe(
+
+
+  }
+
+  getSubjects(teacherId: any, classId: any) {
+    this.subjectService.getSubjectByTeacherIdAndClassId(teacherId, classId).subscribe(
       res => {
         this.subjects = res
         console.log(res)
       }
     )
-
   }
 
   getExams() {
     this.examService.getAll().subscribe(
-      res => this.exams = res
+      res => {
+        this.exams = res
+        console.log(res);
+
+      }
     )
   }
 
@@ -84,14 +93,27 @@ export class AddMarksComponent implements OnInit {
   onchangeClass(event: Event) {
     this.selectedClassId = (event.target as HTMLSelectElement).value
     this.getStudentsByClass(this.selectedClassId)
+    this.getSubjects(this.teacherId, this.selectedClassId)
+    console.log(this.selectedClassId);
+  }
+  onchangeSubject(event: Event) {
+    this.selectedSubjectId = +(event.target as HTMLSelectElement).value
+  }
+  onchangeExam(event: Event) {
+    this.selectedExamId = +(event.target as HTMLSelectElement).value
   }
 
   edit(s: any) { }
   view(s: any) {
-    this.matDialog.open(AddMarksModalComponent, {
-      width: '80%',
-      data: s
-    })
+    if (this.selectedClassId && this.selectedDepartmentId && this.selectedExamId && this.selectedSubjectId) {
+      this.matDialog.open(AddMarksModalComponent, {
+        width: '80%',
+        data: { ...s, subjectId: this.selectedSubjectId, examId: this.selectedExamId, teacherId: this.teacherId }
+      })
+    } else {
+      alert('Please select everything properly!')
+    }
+
   }
   modal() {
     this.matDialog.open(AddMarksModalComponent, {
@@ -99,8 +121,5 @@ export class AddMarksComponent implements OnInit {
     })
   }
   delete(s: any) { }
-
-
-
 
 }

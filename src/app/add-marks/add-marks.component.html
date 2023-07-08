@@ -22,36 +22,44 @@
                     <form>
                         <div class="grid grid-cols-3 gap-3 mb-5">
                             <div class="">
-                                <label class="mb-2" for="">Teacher Name</label>
-                                <select class="form-select">
-                                    <option value="">Teacher Name</option>
+                                <label class="mb-2" for="">Year</label>
+                                <select class="form-select text-sm">
+                                    <option value="">2021</option>
+                                    <option value="">2022</option>
+                                    <option value="">2023</option>
                                 </select>
                             </div>
-                            <div class="">
-                                <label class="mb-2" for="">Subjects</label>
-                                <select class="form-select">
-                                    <option [value]="s.id" *ngFor="let s of subjects">{{s.subjectname}}</option>
-                                </select>
-                            </div>
+
                             <div class="">
                                 <label class="mb-2" for="">Exam</label>
-                                <select class="form-select">
+                                <select class="form-select text-sm" (change)="onchangeExam($event)">
+                                    <option value="">Please Select Exam</option>
+
                                     <option [value]="e.id" *ngFor="let e of exams">{{e.examname}}</option>
                                 </select>
                             </div>
                             <div class="">
                                 <label class="mb-2" for="">Department</label>
-                                <select class="form-select" (change)="onchangeDepartment($event)">
+                                <select class="form-select text-sm" (change)="onchangeDepartment($event)">
                                     <option value="">Please Select department</option>
                                     <option [value]="d.id" *ngFor="let d of department">{{d.departmentname}}</option>
                                 </select>
                             </div>
                             <div class="">
                                 <label class="mb-2" for="">Class</label>
-                                <select class="form-select" (change)="onchangeClass($event)">
+                                <select class="form-select text-sm" (change)="onchangeClass($event)">
                                     <option value="">Please Select Class</option>
 
                                     <option [value]="c.id" *ngFor="let c of class">{{c.classname}}</option>
+                                </select>
+                            </div>
+
+                            <div class="">
+                                <label class="mb-2" for="">Subjects</label>
+                                <select class="form-select text-sm" (change)="onchangeSubject($event)">
+                                    <option value="">Please Select Subject</option>
+
+                                    <option [value]="s.id" *ngFor="let s of subjects">{{s.subjectname}}</option>
                                 </select>
                             </div>
 

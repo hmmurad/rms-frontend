@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MarksService } from '../shared/services/marks.service';
+import { StudentService } from '../shared/services/student.service';
 
 @Component({
   selector: 'app-manage-marks',
@@ -9,26 +10,34 @@ import { MarksService } from '../shared/services/marks.service';
 export class ManageMarksComponent implements OnInit {
 
   marks: any
-  totalMarks: any
-  constructor(private marksService: MarksService) { }
+  student: any
+  totalMarks: any[] = []
+  constructor(private marksService: MarksService,
+    private studentService: StudentService) { }
 
   ngOnInit(): void {
     this.getAll()
+    this.marksService.getMarksByStudentIdAndClassId(3, 4).subscribe(
+      res => {
+        console.log(res);
 
+      }
+    )
   }
+
+
 
   getAll() {
     this.marksService.getAll().subscribe(
       res => {
-        this.marks = res
-        for (let index = 0; index < res.length; index++) {
-          this.totalMarks = res[index].attendance + res[index].assignment + res[index].tutorial + res[index].written;
-
+        for (let index = 0; index < res.length; ++index) {
+          this.totalMarks[index] = res[index].attendance + res[index].assignment + res[index].tutorial + res[index].written;
         }
-        console.log(this.totalMarks);
+        this.marks = res
       }
     )
   }
+
 
   onEdit(s: any) { }
   delete(s: any) { }

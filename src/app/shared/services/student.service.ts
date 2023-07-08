@@ -19,9 +19,9 @@ export class StudentService {
         return this.http.get<Student>(`${this.url}/` + id)
     }
 
-    getStdByClassId(classId?: any): Observable<Student> {
+    getStdByClassId(classId?: any): Observable<Student[]> {
         const params = new HttpParams().set('class', classId)
-        return this.http.get<Student>(`${this.url}`, { params })
+        return this.http.get<Student[]>(`${this.url}`, { params })
     }
 
     create(data: Student) {

@@ -8,79 +8,95 @@
                 <i class='bx bx-home mr-2'></i>
                 <span>Home</span>
             </a> /
-            <span>Students</span> /
-            <span>Manage Students</span>
+            <span>Results</span> /
+            <span>Manage Results</span>
         </div>
     </div>
     <div class="bg-gray-100 p-4 h-screen">
         <div class="flex justify-center items-center">
             <div class="w-full rounded-md bg-white shadow-sm py-4 px-3">
-                <h4 class="text-base leading-6 font-medium">Manage Students</h4>
-                <button class="btn btn-outline-success px-4 text-sm rounded-sm my-3 font-medium"
-                    routerLink="/add-student">Add New
-                    Student</button>
-                <div>
-                    <div class="flex justify-between items-center">
-                        <div class="flex justify-start items-center gap-2 text-sm">
-                            <span>Show</span>
-                            <select class="form-select px-2 py-1 w-20">
-                                <option value="">1</option>
-                                <option value="">1</option>
-                                <option value="">1</option>
+                <h4 class="text-base leading-6 font-medium">Manage Results</h4>
+                <div class="flex justify-between items-start gap-3 pt-3">
+                    <div class=" w-full h-full  text-gray-800 border rounded-md p-3">
+                        <div>
+                            <label class="form-label text-sm">By Exam</label>
+                            <select class="form-select text-sm" (change)="onchangeExam($event)">
+                                <option value="">Please select class</option>
+                                <option [value]="exam.id" *ngFor="let exam of exams">{{exam.examname}}</option>
                             </select>
-                            <span>entries</span>
                         </div>
-                        <div class="flex justify-start items-center gap-2 text-sm">
-                            <span>Search:</span>
-                            <input type="text" class="form-control px-2 py-1">
+                        <div>
+                            <label class="form-label text-sm">By Class</label>
+                            <select class="form-select text-sm" (change)="onchangeClasses($event)">
+                                <option value="">Please select class</option>
+                                <option [value]="class.id" *ngFor="let class of classes">{{class.classname}}</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="mt-3">
-                        <table class="table table-bordered">
-                            <thead class="text-sm">
-                                <tr class="text-center">
-                                    <th>#</th>
-                                    <th>Fullname</th>
-                                    <th>Student Id</th>
-                                    <th>Department</th>
-                                    <th>Email</th>
-                                    <th>Date of Birth</th>
-                                    <th>Gender</th>
-                                    <th>Mobile</th>
-                                    <th>Address</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-sm">
-                                <tr *ngFor="let s of students; let i= index" class="text-center">
-                                    <td>{{i+1}}</td>
-                                    <td>{{s.fullname | uppercase}}</td>
-                                    <td>{{s.departmentId}}</td>
-                                    <td>{{s.classId}}</td>
-                                    <td>{{s.email}}</td>
-                                    <td>{{s.dob | date}}</td>
-                                    <td>{{s.gender}}</td>
-                                    <td>{{s.mobile}}</td>
-                                    <td>{{s.address}}</td>
-                                    <td>{{s.status}}</td>
-                                    <td class="text-center space-x-3">
-                                        <i (click)="onEdit(s)"
-                                            class='bx bx-edit text-indigo-600 text-md cursor-pointer'></i>
-                                        <i (click)="view(s)"
-                                            class='bx bx-book-open text-green-600 text-md cursor-pointer'></i>
-                                        <i (click)="delete(s)"
-                                            class='bx bx-trash text-red-700 text-md cursor-pointer font-semibold'></i>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex justify-start items-center gap-2 text-sm">
+                                <span>Show</span>
+                                <select class="form-select px-2 py-1 w-20">
+                                    <option value="">1</option>
+                                    <option value="">1</option>
+                                    <option value="">1</option>
+                                </select>
+                                <span>entries</span>
+                            </div>
+                            <div class="flex justify-start items-center gap-2 text-sm">
+                                <span>Search:</span>
+                                <input type="text" class="form-control px-2 py-1">
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <table class="table table-bordered">
+                                <thead class="text-sm">
+                                    <tr class="text-center">
+                                        <th>#</th>
+                                        <th>Fullname</th>
+                                        <th>Student Id</th>
+                                        <th>Department</th>
+                                        <th>Email</th>
+                                        <th>Date of Birth</th>
+                                        <th>Gender</th>
+                                        <th>Mobile</th>
+                                        <th>Address</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm">
+                                    <tr *ngFor="let s of students; let i= index" class="text-center">
+                                        <td>{{i+1}}</td>
+                                        <td>{{s.fullname | uppercase}}</td>
+                                        <td>{{s.departmentId}}</td>
+                                        <td>{{s.classId}}</td>
+                                        <td>{{s.email}}</td>
+                                        <td>{{s.dob | date}}</td>
+                                        <td>{{s.gender}}</td>
+                                        <td>{{s.mobile}}</td>
+                                        <td>{{s.address}}</td>
+                                        <td>{{s.status}}</td>
+                                        <td class="text-center space-x-3">
+                                            <i (click)="onEdit(s)"
+                                                class='bx bx-edit text-indigo-600 text-md cursor-pointer'></i>
+                                            <i (click)="view(s)"
+                                                class='bx bx-book-open text-green-600 text-md cursor-pointer'></i>
+                                            <i (click)="delete(s)"
+                                                class='bx bx-trash text-red-700 text-md cursor-pointer font-semibold'></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                        <div class="text-center mt-2">
-                            <span>Pagination</span>
+                            <div class="text-center mt-2">
+                                <span>Pagination</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
+import { ChangeDetectionStrategy } from '@angular/compiler';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +11,16 @@ export class HeaderComponent implements OnInit {
 
   showBtn = false;
 
+  constructor(private authService: AuthService) { }
+
 
   ngOnInit(): void {
+    this.authService.loggedUser.subscribe(
+      res => {
+        console.log(res);
+
+      }
+    )
 
   }
 
@@ -19,6 +29,10 @@ export class HeaderComponent implements OnInit {
     // this.showBtn = !this.showBtn
 
     document.querySelector('#submenu')?.classList.toggle('hidden')
+
+  }
+  logout() {
+    console.log('logout');
 
   }
 }

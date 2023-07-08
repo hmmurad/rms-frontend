@@ -1,7 +1,7 @@
 export interface Student {
     id?: number;
     fullname: string;
-    roll: string;
+    roll: number;
     email: string,
     mobile: string,
     address: string,
