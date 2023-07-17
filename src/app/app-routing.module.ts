@@ -10,6 +10,7 @@ import { AddStudentComponent } from './add-student/add-student.component';
 import { AddSubjectCombinationComponent } from './add-subject-combination/add-subject-combination.component';
 import { AddSubjectComponent } from './add-subject/add-subject.component';
 import { AddTeacherComponent } from './add-teacher/add-teacher.component';
+import { AuthGuard } from './auth/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainComponent } from './main/main.component';
 import { ManageClassComponent } from './manage-class/manage-class.component';
@@ -22,51 +23,203 @@ import { ManageStudentsComponent } from './manage-students/manage-students.compo
 import { ManageSubjectsCombinationComponent } from './manage-subjects-combination/manage-subjects-combination.component';
 import { ManageSubjectsComponent } from './manage-subjects/manage-subjects.component';
 import { ManageTeacherComponent } from './manage-teacher/manage-teacher.component';
+import { RoleGuard } from './shared/guards/roles.guard';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
   {
-    path: '', component: MainComponent, children: [
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: '',
+    component: MainComponent,
+    canActivate: [AuthGuard],
+    children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'add-class', component: AddClassComponent },
-      { path: 'edit-class/:id', component: AddClassComponent },
-      { path: 'manage-class', component: ManageClassComponent },
-      { path: 'add-subject', component: AddSubjectComponent },
-      { path: 'edit-subject/:id', component: AddSubjectComponent },
-      { path: 'manage-subjects', component: ManageSubjectsComponent },
-      { path: 'add-sub-comb', component: AddSubjectCombinationComponent },
-      { path: 'manage-sub-comb', component: ManageSubjectsCombinationComponent },
-      { path: 'add-department', component: AddDepartmentComponent },
-      { path: 'edit-department/:id', component: AddDepartmentComponent },
-      { path: 'manage-departments', component: ManageDepartmentsComponent },
-      { path: 'add-student', component: AddStudentComponent },
-      { path: 'add-student', component: AddStudentComponent },
-      { path: 'edit-student/:id', component: AddStudentComponent },
-      { path: 'student/:id', component: StudentProfileComponent },
-      { path: 'manage-students', component: ManageStudentsComponent },
-      { path: 'add-teacher', component: AddTeacherComponent },
-      { path: 'edit-teacher/:id', component: AddTeacherComponent },
-      { path: 'teacher/:id', component: TeacherProfileComponent },
-      { path: 'manage-teachers', component: ManageTeacherComponent },
-      { path: 'add-result', component: AddResultComponent },
-      { path: 'manage-results', component: ManageResultComponent },
+      {
+        path: 'add-class',
+        component: AddClassComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'edit-class/:id',
+        component: AddClassComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'manage-class',
+        component: ManageClassComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'add-subject',
+        component: AddSubjectComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'edit-subject/:id',
+        component: AddSubjectComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'manage-subjects',
+        component: ManageSubjectsComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'add-sub-comb',
+        component: AddSubjectCombinationComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'manage-sub-comb',
+        component: ManageSubjectsCombinationComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'add-department',
+        component: AddDepartmentComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'edit-department/:id',
+        component: AddDepartmentComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'manage-departments',
+        component: ManageDepartmentsComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'add-student',
+        component: AddStudentComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'add-student',
+        component: AddStudentComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'edit-student/:id',
+        component: AddStudentComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'student/:id',
+        component: StudentProfileComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'manage-students',
+        component: ManageStudentsComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'add-teacher',
+        component: AddTeacherComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'edit-teacher/:id',
+        component: AddTeacherComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'teacher/:id',
+        component: TeacherProfileComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'manage-teachers',
+        component: ManageTeacherComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'add-result',
+        component: AddResultComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'manage-results',
+        component: ManageResultComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
       { path: 'add-marks', component: AddMarksComponent },
-      { path: 'manage-marks', component: ManageMarksComponent },
-      { path: 'add-exam', component: AddExamComponent },
-      { path: 'edit-exam/:id', component: AddExamComponent },
-      { path: 'manage-exam', component: ManageExamComponent },
-      { path: 'add-session', component: AddSessionComponent },
-      { path: 'edit-session/:id', component: AddSessionComponent },
-      { path: 'manage-sessions', component: ManageSessionComponent },
-    ]
-  }
+      {
+        path: 'manage-marks',
+        component: ManageMarksComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'add-exam',
+        component: AddExamComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'edit-exam/:id',
+        component: AddExamComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'manage-exam',
+        component: ManageExamComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'add-session',
+        component: AddSessionComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'edit-session/:id',
+        component: AddSessionComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+      {
+        path: 'manage-sessions',
+        component: ManageSessionComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

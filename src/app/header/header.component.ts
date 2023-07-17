@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { ChangeDetectionStrategy } from '@angular/compiler';
+import { UserStoreService } from '../auth/user.store.service';
 
 @Component({
   selector: 'app-header',
@@ -10,29 +11,27 @@ import { ChangeDetectionStrategy } from '@angular/compiler';
 export class HeaderComponent implements OnInit {
 
   showBtn = false;
+  user: any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private userStoreService: UserStoreService) { }
 
 
   ngOnInit(): void {
-    this.authService.loggedUser.subscribe(
+    this.userStoreService.getUserFromStore().subscribe(
       res => {
-        console.log(res);
-
+        const userFromAuth = this.authService.getUserFromToken().user
+        this.user = res || userFromAuth
       }
     )
+
 
   }
 
 
   onClick() {
-    // this.showBtn = !this.showBtn
-
     document.querySelector('#submenu')?.classList.toggle('hidden')
-
   }
   logout() {
-    console.log('logout');
-
+    this.authService.logout()
   }
 }

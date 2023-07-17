@@ -6,6 +6,7 @@ import { AuthRoutingModule } from './auth.routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from '../shared/interceptors/auth.interceptor.service';
+import { UserStoreService } from './user.store.service';
 
 
 

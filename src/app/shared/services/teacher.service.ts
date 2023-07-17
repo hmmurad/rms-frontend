@@ -7,12 +7,12 @@ import { Teacher } from '../models/teacher';
     providedIn: 'root'
 })
 export class TeacherService {
-    url = 'http://localhost:3000/teachers'
+    url = 'http://localhost:3000/users'
 
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<Teacher[]>(`${this.url}`)
+        return this.http.get<any[]>(`${this.url}`)
     }
 
     getById(id: number): Observable<Teacher> {

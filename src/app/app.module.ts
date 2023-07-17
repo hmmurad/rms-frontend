@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { AddClassComponent } from './add-class/add-class.component';
 import { AddDepartmentComponent } from './add-department/add-department.component';
 import { AddExamComponent } from './add-exam/add-exam.component';
+import { AddMarksModalComponent } from './add-marks-modal/add-marks-modal.component';
 import { AddMarksComponent } from './add-marks/add-marks.component';
 import { AddResultComponent } from './add-result/add-result.component';
 import { AddSessionComponent } from './add-session/add-session.component';
@@ -26,6 +27,7 @@ import { MainComponent } from './main/main.component';
 import { ManageClassComponent } from './manage-class/manage-class.component';
 import { ManageDepartmentsComponent } from './manage-departments/manage-departments.component';
 import { ManageExamComponent } from './manage-exam/manage-exam.component';
+import { ManageMarksComponent } from './manage-marks/manage-marks.component';
 import { ManageResultComponent } from './manage-result/manage-result.component';
 import { ManageStudentsComponent } from './manage-students/manage-students.component';
 import { ManageSubjectsCombinationComponent } from './manage-subjects-combination/manage-subjects-combination.component';
@@ -35,13 +37,14 @@ import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
-import { ManageMarksComponent } from './manage-marks/manage-marks.component';
-import { AddMarksModalComponent } from './add-marks-modal/add-marks-modal.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { ToastrModule } from 'ngx-toastr';
+import { EditMarksModalComponent } from './edit-marks-modal/edit-marks-modal.component';
 import { ManageSessionComponent } from './manage-session/manage-session.component';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor.service';
+import { ViewProfileModalComponent } from './view-profile-modal/view-profile-modal.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +79,8 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor.service'
     AddSessionComponent,
     AddMarksModalComponent,
     ManageSessionComponent,
+    EditMarksModalComponent,
+    ViewProfileModalComponent,
 
   ],
   imports: [
@@ -87,10 +92,22 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor.service'
     ReactiveFormsModule,
     AuthModule,
     MatDialogModule,
-    MatMenuModule
+    MatMenuModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }
+    )
 
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

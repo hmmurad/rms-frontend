@@ -18,7 +18,7 @@ export class AddMarksComponent implements OnInit {
   department: any
   students: any
   subjects: any
-  teacherId: any = 1
+  userId: any = 1
   selectedDepartmentId: any
   selectedClassId: any
   selectedSubjectId: any
@@ -43,8 +43,8 @@ export class AddMarksComponent implements OnInit {
 
   }
 
-  getSubjects(teacherId: any, classId: any) {
-    this.subjectService.getSubjectByTeacherIdAndClassId(teacherId, classId).subscribe(
+  getSubjects(userId: any, classId: any) {
+    this.subjectService.getSubjectByUserIdAndClassId(userId, classId).subscribe(
       res => {
         this.subjects = res
         console.log(res)
@@ -93,7 +93,7 @@ export class AddMarksComponent implements OnInit {
   onchangeClass(event: Event) {
     this.selectedClassId = (event.target as HTMLSelectElement).value
     this.getStudentsByClass(this.selectedClassId)
-    this.getSubjects(this.teacherId, this.selectedClassId)
+    this.getSubjects(this.userId, this.selectedClassId)
     console.log(this.selectedClassId);
   }
   onchangeSubject(event: Event) {
@@ -108,7 +108,7 @@ export class AddMarksComponent implements OnInit {
     if (this.selectedClassId && this.selectedDepartmentId && this.selectedExamId && this.selectedSubjectId) {
       this.matDialog.open(AddMarksModalComponent, {
         width: '80%',
-        data: { ...s, subjectId: this.selectedSubjectId, examId: this.selectedExamId, teacherId: this.teacherId }
+        data: { ...s, subjectId: this.selectedSubjectId, examId: this.selectedExamId, userId: this.userId }
       })
     } else {
       alert('Please select everything properly!')

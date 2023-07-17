@@ -57,7 +57,7 @@ export class AddSubjectComponent implements OnInit {
         subjectname: [],
         code: [],
         classId: [],
-        teacherId: []
+        userId: []
       })
     }
   }
@@ -88,11 +88,14 @@ export class AddSubjectComponent implements OnInit {
 
   create() {
     console.log(this.addForm.value);
-
     this.subjectService.create(this.addForm.value).subscribe((res) => {
       console.log(res);
       this.addForm.reset()
-    })
+    },
+      (err) => {
+        console.log(err);
+
+      })
   }
 
 

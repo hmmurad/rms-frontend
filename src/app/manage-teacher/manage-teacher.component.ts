@@ -16,7 +16,7 @@ import { Teacher } from '../shared/models/teacher';
 })
 export class ManageTeacherComponent implements OnInit {
 
-  teachers: Teacher[] = []
+  teachers: any[] = []
 
   constructor(
     private teacherService: TeacherService,

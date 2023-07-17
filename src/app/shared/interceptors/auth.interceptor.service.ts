@@ -1,27 +1,36 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http"
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http"
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs"
+import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
+import { Observable, catchError, throwError, of } from "rxjs"
 import { AuthService } from "src/app/auth/auth.service"
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService, private toaster: ToastrService, private router: Router) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         const token = localStorage.getItem('token')
         if (token) {
-            console.log(token);
-
-            const cloned = req.clone({
-                headers: req.headers.set("Authorization",
-                    "Bearer " + token)
+            req = req.clone({
+                setHeaders: { Authorization: `Bearer ${token}` }
             });
-            return next.handle(cloned)
-        } else {
-            return next.handle(req)
         }
+        return next.handle(req).pipe(
+            catchError((err: any) => {
+                if (err instanceof HttpErrorResponse) {
+                    if (err.status === 401) {
+                        this.router.navigate(['/auth/login'])
+                        this.toaster.warning('Token expired , please login again!', 'Warning')
+                    }
+                }
+                return throwError(() => new Error('Something wrong occured!'))
+
+            })
+        )
+
 
     }
 }

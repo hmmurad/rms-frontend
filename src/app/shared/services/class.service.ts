@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Class } from '../models/class';
 import { Observable } from 'rxjs';
@@ -12,6 +12,7 @@ export class ClassService {
 
 
   getAll() {
+    // headers = new HttpHeaders().set()
     return this.http.get<Class[]>(`http://localhost:3000/classes`)
   }
 

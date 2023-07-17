@@ -6,23 +6,23 @@
         <div class="grid grid-cols-4 grid-rows-5 gap-4">
             <div
                 class="bg-gradient-to-r from-red-900 to-red-500 rounded-md shadow p-4 text-white font-medium text-right">
-                <span class="text-xl">34</span>
+                <span class="text-xl" *ngIf="(std$ | async) as student">{{student.length}}</span>
                 <h4>Registered Student</h4>
             </div>
             <div
                 class="bg-gradient-to-r from-teal-900 to-teal-500 rounded-md shadow p-4 text-white font-medium text-right">
-                <span class="text-xl">04</span>
-                <h4>Student Listed</h4>
+                <span class="text-xl" *ngIf="(dept$ | async) as dept">{{dept.length}}</span>
+                <h4>Department Listed</h4>
             </div>
             <div
                 class="bg-gradient-to-r from-yellow-900 to-yellow-500 rounded-md shadow p-4 text-white font-medium text-right">
-                <span class="text-xl">02</span>
-                <h4>Total Department</h4>
+                <span class="text-xl" *ngIf="(class$ | async) as class">{{class.length}}</span>
+                <h4>Total Classes</h4>
             </div>
             <div
                 class="bg-gradient-to-r from-sky-900 to-sky-500 rounded-md shadow p-4 text-white font-medium text-right">
-                <span class="text-xl">02</span>
-                <h4>Total classes Listed</h4>
+                <span class="text-xl" *ngIf="(sub$ | async) as sub">{{sub.length}}</span>
+                <h4>Total Subjects</h4>
             </div>
             <a href=""
                 class="bg-gradient-to-r from-purple-900 to-rose-500  rounded-md shadow p-4 text-white font-medium text-right hover:bg-gray-800">

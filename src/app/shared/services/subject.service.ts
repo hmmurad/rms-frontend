@@ -23,12 +23,12 @@ export class SubjectService {
         const params = new HttpParams().set('class', classId)
         return this.http.get<Subject>(`${this.url}`, { params })
     }
-    getSubjectByTeacherId(teacherId?: any): Observable<Subject> {
-        const params = new HttpParams().set('teacher', teacherId)
+    getSubjectByUserId(userId?: any): Observable<Subject> {
+        const params = new HttpParams().set('user', userId)
         return this.http.get<Subject>(`${this.url}`, { params })
     }
-    getSubjectByTeacherIdAndClassId(teacherId?: any, classId?: any): Observable<Subject> {
-        const params = new HttpParams().set('teacher', teacherId).set('class', classId)
+    getSubjectByUserIdAndClassId(userId?: any, classId?: any): Observable<Subject> {
+        const params = new HttpParams().set('user', userId).set('class', classId)
         return this.http.get<Subject>(`${this.url}`, { params })
     }
 

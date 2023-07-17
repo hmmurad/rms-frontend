@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClassService } from '../shared/services/class.service';
 import { Class } from '../shared/models/class';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-manage-class',
@@ -14,7 +15,8 @@ export class ManageClassComponent implements OnInit {
 
   constructor(
     private classService: ClassService,
-    private router: Router
+    private router: Router,
+    private toaster: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -24,7 +26,12 @@ export class ManageClassComponent implements OnInit {
   getAllClasses() {
     this.classService.getAll().subscribe((res) => {
       this.classes = res
-    })
+    },
+      (err) => {
+        console.log(err);
+
+        this.toaster.warning('Token expired , Please login agian', err)
+      })
   }
 
   onEditClass(data: Class) {

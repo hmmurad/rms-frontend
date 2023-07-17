@@ -1,20 +1,17 @@
-import { NgIf } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DepartmentService } from '../shared/services/department.service';
 import { ClassService } from '../shared/services/class.service';
 import { SubjectService } from '../shared/services/subject.service';
 import { MarksService } from '../shared/services/marks.service';
 
 @Component({
-  selector: 'app-add-marks-modal',
-  templateUrl: './add-marks-modal.component.html',
-  styleUrls: ['./add-marks-modal.component.scss'],
-  // standalone: true,
-  // imports: [MatDialogModule, NgIf],
+  selector: 'app-edit-marks-modal',
+  templateUrl: './edit-marks-modal.component.html',
+  styleUrls: ['./edit-marks-modal.component.scss']
 })
-export class AddMarksModalComponent implements OnInit {
+export class EditMarksModalComponent implements OnInit {
 
   form!: FormGroup;
   department: any
@@ -66,6 +63,11 @@ export class AddMarksModalComponent implements OnInit {
       assignment: [],
       written: [],
     })
+
+
+
+
+
   }
 
   onsubmit() {
@@ -85,3 +87,4 @@ export class AddMarksModalComponent implements OnInit {
 
 
 }
+

@@ -2,8 +2,9 @@
     <aside class="bg-neutral-600 w-72 text-gray-200 ">
         <div>
             <div class="flex flex-col justify-center items-center mt-5 mb-3 gap-3">
-                <i class='bx bx-user border-2 border-emerald-700 p-3 w-18 text-5xl h-18 rounded-full bg-slate-400'></i>
-                <h2>Name - Role</h2>
+                <i class='bx bx-user border-2  p-3 w-18 text-5xl h-18 rounded-full bg-slate-400'></i>
+                <h2>{{user ? user.fullname : 'User'}} - {{user ? user.roles : 'role'}}</h2>
+
             </div>
             <h5 class="text-base font-bold p-3 pb-0">MAIN CATEGORY</h5>
             <hr class="my-2 text-gray-300">
@@ -14,233 +15,259 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class=" cursor-pointer" appDropdown>
-                    <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
-                        <i class='bx bx-book-open mr-3'></i>
-                        <span>Sessions</span>
-                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
-                    </a>
-                    <ul class="pt-2 hidden group-hover:block delay-150">
+                <ng-container *ngIf="user.roles === 'Admin'">
+                    <li class=" cursor-pointer" appDropdown>
+                        <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
+                            <i class='bx bx-book-open mr-3'></i>
+                            <span>Sessions</span>
+                            <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
+                            <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
+                        </a>
+                        <ul class="pt-2 hidden group-hover:block delay-150">
 
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/add-session"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxs-bookmark mr-3'></i>
-                                <span>Add Session</span>
-                            </a>
-                        </li>
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/manage-sessions"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxs-category mr-3'></i>
-                                <span>Manage Sessions</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class=" cursor-pointer" appDropdown>
-                    <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
-                        <i class='bx bx-book-open mr-3'></i>
-                        <span>Department</span>
-                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
-                    </a>
-                    <ul class="pt-2 hidden group-hover:block delay-150">
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/add-session"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxs-bookmark mr-3'></i>
+                                    <span>Add Session</span>
+                                </a>
+                            </li>
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/manage-sessions"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxs-category mr-3'></i>
+                                    <span>Manage Sessions</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="user.roles === 'Admin'">
+                    <li class=" cursor-pointer" appDropdown>
+                        <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
+                            <i class='bx bx-book-open mr-3'></i>
+                            <span>Department</span>
+                            <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
+                            <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
+                        </a>
+                        <ul class="pt-2 hidden group-hover:block delay-150">
 
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/add-department"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxs-bookmark mr-3'></i>
-                                <span>Add Department</span>
-                            </a>
-                        </li>
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/manage-departments"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxs-category mr-3'></i>
-                                <span>Manage Departments</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/add-department"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxs-bookmark mr-3'></i>
+                                    <span>Add Department</span>
+                                </a>
+                            </li>
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/manage-departments"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxs-category mr-3'></i>
+                                    <span>Manage Departments</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="user.roles === 'Admin'">
+                    <li class=" cursor-pointer" appDropdown>
+                        <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
+                            <i class='bx bx-book-open mr-3'></i>
+                            <span>Subjects</span>
+                            <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
+                            <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
+                        </a>
+                        <ul class="pt-2 hidden group-hover:block delay-150">
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/add-subject"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxs-bookmark mr-3'></i>
+                                    <span>Add Subject</span>
+                                </a>
+                            </li>
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/manage-subjects"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxs-category mr-3'></i>
+                                    <span>Manage Subjects</span>
+                                </a>
+                            </li>
 
-                <li class=" cursor-pointer" appDropdown>
-                    <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
-                        <i class='bx bx-book-open mr-3'></i>
-                        <span>Subjects</span>
-                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
-                    </a>
-                    <ul class="pt-2 hidden group-hover:block delay-150">
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/add-subject"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxs-bookmark mr-3'></i>
-                                <span>Add Subject</span>
-                            </a>
-                        </li>
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/manage-subjects"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxs-category mr-3'></i>
-                                <span>Manage Subjects</span>
-                            </a>
-                        </li>
+                        </ul>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="user.roles === 'Admin'">
+                    <li class=" cursor-pointer" appDropdown>
+                        <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
+                            <i class="bx bxs-user mr-2"></i>
+                            <span>Students</span>
+                            <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
+                            <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
+                        </a>
+                        <ul class="pt-2 hidden group-hover:block delay-150">
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/add-student"
+                                    class="py-2 hover:text-white flex justify-start items-center  pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxs-bookmark mr-3'></i>
+                                    <span>Add Student</span>
+                                </a>
+                            </li>
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="manage-students"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxs-category mr-3'></i>
+                                    <span>Manage Students</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="user.roles === 'Admin'">
+                    <li class=" cursor-pointer" appDropdown>
+                        <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
+                            <i class="bx bxs-pen mr-2"></i>
+                            <span>Teacher</span>
+                            <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
+                            <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
+                        </a>
+                        <ul class="pt-2 hidden group-hover:block delay-150">
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/add-teacher"
+                                    class="py-2 hover:text-white flex justify-start items-center  pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxs-bookmark mr-3'></i>
+                                    <span>Add Teacher</span>
+                                </a>
+                            </li>
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="manage-teachers"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxs-category mr-3'></i>
+                                    <span>Manage Teachers</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="user.roles === 'Admin'">
+                    <li class="cursor-pointer" appDropdown>
+                        <a class="py-2 px-3 hover:text-white flex justify-start items-center hover:bg-neutral-700 ">
+                            <i class='bx bx-notepad mr-3'></i>
+                            <span>Classes</span>
+                            <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
+                            <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
+                        </a>
+                        <ul class="pt-2 hidden group-hover:block delay-150">
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/add-class"
+                                    class="py-2 hover:text-white hover:bg-neutral-700 flex justify-start items-center pl-4">
+                                    <i class='bx bxs-bookmark mr-3'></i>
+                                    <span>Add Class</span>
+                                </a>
+                            </li>
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/manage-class"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxs-cog mr-3'></i>
+                                    <span>Manage Classes</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="user.roles === 'Admin'">
+                    <li class="cursor-pointer" appDropdown>
+                        <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
+                            <i class="bx bxs-user mr-2"></i>
+                            <span>Results</span>
+                            <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
+                            <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
+                        </a>
+                        <ul class="pt-2 hidden group-hover:block delay-150">
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/add-result"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxl-deezer mr-2'></i>
+                                    <span>Add Result</span>
+                                </a>
+                            </li>
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/manage-results"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxs-cog mr-3'></i>
+                                    <span>Manage Results</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="user.roles === 'Admin'">
+                    <li class="cursor-pointer" appDropdown>
+                        <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
+                            <i class="bx bxs-user mr-2"></i>
+                            <span> Exam</span>
+                            <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
+                            <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
+                        </a>
+                        <ul class="pt-2 hidden group-hover:block delay-150">
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/add-exam"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxl-deezer mr-2'></i>
+                                    <span>Add Exam</span>
+                                </a>
+                            </li>
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/manage-exam"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxs-cog mr-3'></i>
+                                    <span>Manage Exam</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="user">
+                    <li class="cursor-pointer" appDropdown>
+                        <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
+                            <i class="bx bxs-user mr-2"></i>
+                            <span> Marks</span>
+                            <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
+                            <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
+                        </a>
+                        <ul class="pt-2 hidden group-hover:block delay-150">
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/add-marks"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxl-deezer mr-2'></i>
+                                    <span>Add Marks</span>
+                                </a>
+                            </li>
+                            <li class="pl-5 transition ease-in-out delay-500 ">
+                                <a routerLink="/manage-marks"
+                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                                    <i class='bx bxs-cog mr-3'></i>
+                                    <span>Manage Results</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ng-container>
 
-                    </ul>
-                </li>
-
-                <li class=" cursor-pointer" appDropdown>
-                    <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
-                        <i class="bx bxs-user mr-2"></i>
-                        <span>Students</span>
-                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
-                    </a>
-                    <ul class="pt-2 hidden group-hover:block delay-150">
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/add-student"
-                                class="py-2 hover:text-white flex justify-start items-center  pl-4 hover:bg-neutral-700">
-                                <i class='bx bxs-bookmark mr-3'></i>
-                                <span>Add Student</span>
-                            </a>
-                        </li>
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="manage-students"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxs-category mr-3'></i>
-                                <span>Manage Students</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class=" cursor-pointer" appDropdown>
-                    <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
-                        <i class="bx bxs-pen mr-2"></i>
-                        <span>Teacher</span>
-                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
-                    </a>
-                    <ul class="pt-2 hidden group-hover:block delay-150">
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/add-teacher"
-                                class="py-2 hover:text-white flex justify-start items-center  pl-4 hover:bg-neutral-700">
-                                <i class='bx bxs-bookmark mr-3'></i>
-                                <span>Add Teacher</span>
-                            </a>
-                        </li>
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="manage-teachers"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxs-category mr-3'></i>
-                                <span>Manage Teachers</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
 
 
 
-                <li class="cursor-pointer" appDropdown>
-                    <a class="py-2 px-3 hover:text-white flex justify-start items-center hover:bg-neutral-700 ">
-                        <i class='bx bx-notepad mr-3'></i>
-                        <span>Classes</span>
-                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
-                    </a>
-                    <ul class="pt-2 hidden group-hover:block delay-150">
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/add-class"
-                                class="py-2 hover:text-white hover:bg-neutral-700 flex justify-start items-center pl-4">
-                                <i class='bx bxs-bookmark mr-3'></i>
-                                <span>Add Class</span>
-                            </a>
-                        </li>
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/manage-class"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxs-cog mr-3'></i>
-                                <span>Manage Classes</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
 
 
 
-                <li class="cursor-pointer" appDropdown>
-                    <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
-                        <i class="bx bxs-user mr-2"></i>
-                        <span>Results</span>
-                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
-                    </a>
-                    <ul class="pt-2 hidden group-hover:block delay-150">
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/add-result"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxl-deezer mr-2'></i>
-                                <span>Add Result</span>
-                            </a>
-                        </li>
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/manage-results"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxs-cog mr-3'></i>
-                                <span>Manage Results</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="cursor-pointer" appDropdown>
-                    <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
-                        <i class="bx bxs-user mr-2"></i>
-                        <span> Exam</span>
-                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
-                    </a>
-                    <ul class="pt-2 hidden group-hover:block delay-150">
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/add-exam"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxl-deezer mr-2'></i>
-                                <span>Add Exam</span>
-                            </a>
-                        </li>
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/manage-exam"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxs-cog mr-3'></i>
-                                <span>Manage Exam</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="cursor-pointer" appDropdown>
-                    <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
-                        <i class="bx bxs-user mr-2"></i>
-                        <span> Marks</span>
-                        <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                        <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
-                    </a>
-                    <ul class="pt-2 hidden group-hover:block delay-150">
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/add-marks"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxl-deezer mr-2'></i>
-                                <span>Add Marks</span>
-                            </a>
-                        </li>
-                        <li class="pl-5 transition ease-in-out delay-500 ">
-                            <a routerLink="/manage-marks"
-                                class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                <i class='bx bxs-cog mr-3'></i>
-                                <span>Manage Results</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+
+
+
+
+
+
+
+
+
             </ul>
         </div>
     </aside>

@@ -21,6 +21,14 @@ export class MarksService {
         return this.http.post(`${this.url}`, marks)
     }
 
+    getAllById(studentId: any) {
+        return this.http.get(`${this.url}/` + studentId)
+    }
+
+    getOneById(studentId: any) {
+        return this.http.get(`${this.url}/` + 'student' + '/' + studentId)
+    }
+
     getMarksByStudentId(studentId: any) {
         const params = new HttpParams().set('student', studentId)
         return this.http.get(`${this.url}`, { params })
