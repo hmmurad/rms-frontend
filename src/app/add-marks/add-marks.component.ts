@@ -7,6 +7,8 @@ import { SubjectService } from '../shared/services/subject.service';
 import { ExamService } from '../shared/services/exam.service';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { AddMarksModalComponent } from '../add-marks-modal/add-marks-modal.component';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-add-marks',
@@ -18,7 +20,7 @@ export class AddMarksComponent implements OnInit {
   department: any
   students: any
   subjects: any
-  userId: any = 1
+  userId: any
   selectedDepartmentId: any
   selectedClassId: any
   selectedSubjectId: any
@@ -26,18 +28,23 @@ export class AddMarksComponent implements OnInit {
   selectedExamId: any
 
   constructor(
-    private marksService: MarksService,
     private classService: ClassService,
     private studentService: StudentService,
     private departmentService: DepartmentService,
     private subjectService: SubjectService,
     private examService: ExamService,
-    private matDialog: MatDialog
+    private authService: AuthService,
+    private matDialog: MatDialog,
+    private toaster: ToastrService,
+
 
   ) { }
   ngOnInit(): void {
     this.getDepartment()
     this.getExams()
+    this.userId = this.authService.decodeToken().user.id
+    console.log(this.authService.decodeToken().user.id);
+
 
 
 
@@ -103,7 +110,7 @@ export class AddMarksComponent implements OnInit {
     this.selectedExamId = +(event.target as HTMLSelectElement).value
   }
 
-  edit(s: any) { }
+
   view(s: any) {
     if (this.selectedClassId && this.selectedDepartmentId && this.selectedExamId && this.selectedSubjectId) {
       this.matDialog.open(AddMarksModalComponent, {
@@ -111,15 +118,11 @@ export class AddMarksComponent implements OnInit {
         data: { ...s, subjectId: this.selectedSubjectId, examId: this.selectedExamId, userId: this.userId }
       })
     } else {
-      alert('Please select everything properly!')
+      this.toaster.warning('Please select all field', 'Warning')
     }
 
   }
-  modal() {
-    this.matDialog.open(AddMarksModalComponent, {
-      width: '80%'
-    })
-  }
-  delete(s: any) { }
+
+
 
 }

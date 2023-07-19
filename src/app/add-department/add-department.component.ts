@@ -9,6 +9,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { SubjectService } from '../shared/services/subject.service';
 import { Department } from '../shared/models/department';
 import { DepartmentService } from '../shared/services/department.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-department',
@@ -26,6 +27,7 @@ export class AddDepartmentComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private departmentService: DepartmentService,
+    private toaster: ToastrService,
     private location: Location) { }
 
   ngOnInit(): void {
@@ -41,7 +43,7 @@ export class AddDepartmentComponent implements OnInit {
     } else {
       this.editMode = false
     }
-    // console.log(this.addClassForm.controls['classname'].setValue(this.class.classname));
+
   }
 
   initForm() {
@@ -78,6 +80,7 @@ export class AddDepartmentComponent implements OnInit {
   create() {
     this.departmentService.create(this.addForm.value).subscribe((res) => {
       console.log(res);
+      this.toaster.success('Succes', 'Create')
       this.addForm.reset()
     })
   }
@@ -85,7 +88,8 @@ export class AddDepartmentComponent implements OnInit {
 
   update() {
     this.departmentService.update(this.id, this.addForm.value).subscribe((res) => {
-      console.log(res);
+      this.toaster.success('Succes', 'Update')
+
       this.addForm.reset()
     })
   }

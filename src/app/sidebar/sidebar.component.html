@@ -1,14 +1,14 @@
 <div class="flex h-screen">
     <aside class="bg-neutral-600 w-72 text-gray-200 ">
         <div>
-            <div class="flex flex-col justify-center items-center mt-5 mb-3 gap-3">
+            <div class="flex flex-col justify-center items-center mt-5 mb-3 gap-3" *ngIf="user">
                 <i class='bx bx-user border-2  p-3 w-18 text-5xl h-18 rounded-full bg-slate-400'></i>
                 <h2>{{user ? user.fullname : 'User'}} - {{user ? user.roles : 'role'}}</h2>
 
             </div>
             <h5 class="text-base font-bold p-3 pb-0">MAIN CATEGORY</h5>
             <hr class="my-2 text-gray-300">
-            <ul>
+            <ul *ngIf="user">
                 <li class="flex justify-start items-center">
                     <a href="#" class="py-2 hover:text-white hover:bg-neutral-700 px-3 w-full ">
                         <i class='bx bxs-dashboard mr-3'></i>
@@ -123,30 +123,14 @@
                     </li>
                 </ng-container>
                 <ng-container *ngIf="user.roles === 'Admin'">
-                    <li class=" cursor-pointer" appDropdown>
-                        <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
-                            <i class="bx bxs-pen mr-2"></i>
-                            <span>Teacher</span>
-                            <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                            <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
+                    <li class=" transition ease-in-out delay-500 ">
+                        <a routerLink="manage-teachers"
+                            class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                            <i class='bx bxs-category mr-3'></i>
+                            <span>Manage Teachers</span>
                         </a>
-                        <ul class="pt-2 hidden group-hover:block delay-150">
-                            <li class="pl-5 transition ease-in-out delay-500 ">
-                                <a routerLink="/add-teacher"
-                                    class="py-2 hover:text-white flex justify-start items-center  pl-4 hover:bg-neutral-700">
-                                    <i class='bx bxs-bookmark mr-3'></i>
-                                    <span>Add Teacher</span>
-                                </a>
-                            </li>
-                            <li class="pl-5 transition ease-in-out delay-500 ">
-                                <a routerLink="manage-teachers"
-                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                    <i class='bx bxs-category mr-3'></i>
-                                    <span>Manage Teachers</span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
+
                 </ng-container>
                 <ng-container *ngIf="user.roles === 'Admin'">
                     <li class="cursor-pointer" appDropdown>
@@ -175,30 +159,14 @@
                     </li>
                 </ng-container>
                 <ng-container *ngIf="user.roles === 'Admin'">
-                    <li class="cursor-pointer" appDropdown>
-                        <a class="py-2 hover:text-white flex justify-start items-center hover:bg-neutral-700 px-3">
-                            <i class="bx bxs-user mr-2"></i>
-                            <span>Results</span>
-                            <i class="bx bxs-chevron-right ml-auto group-hover:hidden block"></i>
-                            <i class="bx bxs-chevron-down ml-auto hidden group-hover:block"></i>
+                    <li class="transition ease-in-out delay-500 ">
+                        <a routerLink="/manage-results"
+                            class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
+                            <i class='bx bxs-cog mr-3'></i>
+                            <span>Manage Results</span>
                         </a>
-                        <ul class="pt-2 hidden group-hover:block delay-150">
-                            <li class="pl-5 transition ease-in-out delay-500 ">
-                                <a routerLink="/add-result"
-                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                    <i class='bx bxl-deezer mr-2'></i>
-                                    <span>Add Result</span>
-                                </a>
-                            </li>
-                            <li class="pl-5 transition ease-in-out delay-500 ">
-                                <a routerLink="/manage-results"
-                                    class="py-2 hover:text-white flex justify-start items-center pl-4 hover:bg-neutral-700">
-                                    <i class='bx bxs-cog mr-3'></i>
-                                    <span>Manage Results</span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
+
                 </ng-container>
                 <ng-container *ngIf="user.roles === 'Admin'">
                     <li class="cursor-pointer" appDropdown>

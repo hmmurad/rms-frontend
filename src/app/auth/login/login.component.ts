@@ -45,14 +45,13 @@ export class LoginComponent implements OnInit {
           if (res) {
             console.log(res);
             this.form.reset()
-            this.authService.storeToken(res.token)
-            const payload = this.authService.decodeToken()
-            this.userStoreService.setUser(payload.user)
-            this.userStoreService.setRoles(payload.roles)
             this.toastService.success('Successfully Login', 'Login')
             // get return url from query parameters or default to home page
-            const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-            this.router.navigateByUrl(returnUrl);
+            // const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+            setInterval(() => {
+
+              this.router.navigate(['/dashboard']);
+            }, 500)
           }
         },
         err => {

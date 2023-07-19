@@ -38,12 +38,14 @@
 
                             <div class="flex justify-start items-center gap-1">
                                 <label>Sort By:</label>
-                                <a class="cursor-pointer btn btn-outline-success px-2 py-1 text-sm rounded-sm my-3 font-medium" (click)="showall()">Show All</a>
+                                <a class="cursor-pointer btn btn-outline-success px-2 py-1 text-sm rounded-sm my-3 font-medium"
+                                    (click)="showall()">Show All</a>
                                 <select class="form-select px-2 py-1 w-20 text-sm" (change)="onchange($event)">
 
-                                    <option [value]="" >Select</option>
-                                    <option [value]="c.id" *ngFor="let c of classes$ | async">{{c.classname | uppercase}}</option>
-                                
+                                    <option [value]="">Select</option>
+                                    <option [value]="c.id" *ngFor="let c of classes$ | async">{{c.classname |
+                                        uppercase}}</option>
+
                                 </select>
                             </div>
                         </div>
@@ -74,7 +76,7 @@
                             <tbody class="text-sm">
                                 <tr *ngFor="let s of students; let i= index" class="text-center">
                                     <td>{{i+1}}</td>
-                                    <td>{{s.fullname | uppercase}}</td>
+                                    <td class="text-start">{{s.fullname | uppercase}}</td>
                                     <td>{{s.roll}}</td>
                                     <td>{{s.departmentId}}</td>
                                     <td>{{s.email}}</td>

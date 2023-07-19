@@ -45,6 +45,7 @@ import { EditMarksModalComponent } from './edit-marks-modal/edit-marks-modal.com
 import { ManageSessionComponent } from './manage-session/manage-session.component';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor.service';
 import { ViewProfileModalComponent } from './view-profile-modal/view-profile-modal.component';
+import { ViewResultModalComponent } from './view-result-modal/view-result-modal.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { ViewProfileModalComponent } from './view-profile-modal/view-profile-mod
     ManageSessionComponent,
     EditMarksModalComponent,
     ViewProfileModalComponent,
+    ViewResultModalComponent,
 
   ],
   imports: [

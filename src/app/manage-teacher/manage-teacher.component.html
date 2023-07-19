@@ -42,10 +42,7 @@
                                     <th>#</th>
                                     <th>Fullname</th>
                                     <th>Email</th>
-                                    <th>Date of Join</th>
-                                    <th>Gender</th>
-                                    <th>Mobile</th>
-                                    <th>Address</th>
+                                    <th>Role</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -54,10 +51,7 @@
                                     <td>{{i+1}}</td>
                                     <td>{{s.fullname | uppercase}}</td>
                                     <td>{{s.email}}</td>
-                                    <td>{{s.doj | date}}</td>
-                                    <td>{{s.gender}}</td>
-                                    <td>{{s.mobile}}</td>
-                                    <td>{{s.address}}</td>
+                                    <td>{{s.roles}}</td>
                                     <td class="text-center space-x-3">
                                         <i (click)="onEdit(s)"
                                             class='bx bx-edit text-indigo-600 text-md cursor-pointer'></i>

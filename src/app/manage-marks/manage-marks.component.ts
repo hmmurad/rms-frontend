@@ -4,6 +4,7 @@ import { StudentService } from '../shared/services/student.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddMarksModalComponent } from '../add-marks-modal/add-marks-modal.component';
 import { EditMarksModalComponent } from '../edit-marks-modal/edit-marks-modal.component';
+import { ClassService } from '../shared/services/class.service';
 
 @Component({
   selector: 'app-manage-marks',
@@ -12,32 +13,20 @@ import { EditMarksModalComponent } from '../edit-marks-modal/edit-marks-modal.co
 })
 export class ManageMarksComponent implements OnInit {
 
+  selectedClassId: any;
   marks: any
-  student: any
+  classes$ = this.classService.getAll()
   totalMarks: any[] = []
   constructor(private marksService: MarksService,
-    private studentService: StudentService,
+    private classService: ClassService,
     private matdialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.getAll()
-    this.marksService.getMarksByStudentIdAndClassId(3, 4).subscribe(
-      res => {
-        console.log(res);
-      }
-    )
+    this.getAllMarks()
 
-    this.marksService.getOneById(1).subscribe(
-      res => {
-        console.log(res);
-      }
-    )
   }
-
-
-
-  getAll() {
+  getAllMarks() {
     this.marksService.getAll().subscribe(
       res => {
         for (let index = 0; index < res.length; ++index) {
@@ -47,8 +36,6 @@ export class ManageMarksComponent implements OnInit {
       }
     )
   }
-
-
   onEdit(s: any) {
     this.matdialog.open(EditMarksModalComponent, {
       width: '80%',
@@ -56,5 +43,25 @@ export class ManageMarksComponent implements OnInit {
     })
   }
   delete(s: any) { }
+
+  onchange(event: Event) {
+    this.selectedClassId = (event.target as HTMLSelectElement).value
+    this.getMarksByClassId(this.selectedClassId)
+  }
+  showall() {
+    this.getAllMarks()
+  }
+
+
+
+  getMarksByClassId(classId: any) {
+    this.marksService.getMarksByClassId(classId).subscribe(
+      res => {
+        this.marks = res
+      }
+    )
+  }
+
+
 
 }

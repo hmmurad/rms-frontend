@@ -28,8 +28,8 @@ export class ManageSessionComponent implements OnInit {
     })
   }
 
-  onEditClass(data: Class) {
-    this.router.navigate(['edit-class', data.id])
+  onEditsession(data: any) {
+    this.router.navigate(['edit-session', data.id])
   }
 
   delete(data: any) {

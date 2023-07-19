@@ -46,14 +46,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let c of sessions ; let i = index">
+                                <tr *ngFor="let s of sessions ; let i = index">
                                     <td>{{i + 1}}</td>
-                                    <td>{{c.year | uppercase}}</td>
+                                    <td>{{s.year | uppercase}}</td>
                                     <td>12/04/2023</td>
                                     <td class="text-center space-x-3">
-                                        <i (click)="onEditClass(c)"
+                                        <i (click)="onEditsession(s)"
                                             class='bx bx-edit text-indigo-600 text-xl cursor-pointer'></i>
-                                        <i (click)="delete(c)"
+                                        <i (click)="delete(s)"
                                             class='bx bx-trash text-red-700 text-xl cursor-pointer font-semibold'></i>
                                     </td>
                                 </tr>

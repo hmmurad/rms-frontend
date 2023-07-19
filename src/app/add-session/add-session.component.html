@@ -21,10 +21,9 @@
                 <form [formGroup]="addForm" (ngSubmit)="saveClass()">
                     <div class="my-3">
                         <label class="form-label font-semibold">Create Session</label>
-                        <input type="text" class="form-control" required 
-                            formControlName="year" required>
+                        <input type="text" class="form-control" required formControlName="year" required>
                         <small id="fieldhints" class="form-text text-muted">
-                            Eg- PGDIT, PMIT, MSC
+                            Eg- 2012-2013,2013-2014
                         </small>
 
                         <div class="text-red-500 bg-red-200 py-2 mt-1 px-3 rounded"
@@ -38,9 +37,10 @@
 
                     <div class="mt-4 flex justify-between items-center">
                         <div class="flex gap-3">
-                            <button type="submit" [disabled]="!this.addForm.valid" class="btn btn-outline-success px-4 text-sm rounded-sm font-medium">{{this.editMode ?
+                            <button type="submit" [disabled]="!this.addForm.valid"
+                                class="btn btn-outline-success px-4 text-sm rounded-sm font-medium">{{this.editMode ?
                                 'Update' : 'Save'}}</button>
-                            <button (click)="cancel()"
+                            <button (click)="cancel()" type="button"
                                 class="btn btn-outline-primary px-4 text-sm rounded-sm font-medium">Cancel</button>
 
                         </div>

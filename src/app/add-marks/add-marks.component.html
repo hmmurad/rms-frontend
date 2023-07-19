@@ -40,7 +40,8 @@
                                 <label class="mb-2" for="">Department</label>
                                 <select class="form-select text-sm" (change)="onchangeDepartment($event)">
                                     <option value="">Please Select department</option>
-                                    <option [value]="d.id" *ngFor="let d of department">{{d.departmentname}}</option>
+                                    <option [value]="d.id" *ngFor="let d of department">{{d.departmentname | uppercase}}
+                                    </option>
                                 </select>
                             </div>
                             <div class="">
@@ -48,7 +49,7 @@
                                 <select class="form-select text-sm" (change)="onchangeClass($event)">
                                     <option value="">Please Select Class</option>
 
-                                    <option [value]="c.id" *ngFor="let c of class">{{c.classname}}</option>
+                                    <option [value]="c.id" *ngFor="let c of class">{{c.classname | uppercase}}</option>
                                 </select>
                             </div>
 
@@ -57,7 +58,8 @@
                                 <select class="form-select text-sm" (change)="onchangeSubject($event)">
                                     <option value="">Please Select Subject</option>
 
-                                    <option [value]="s.id" *ngFor="let s of subjects">{{s.subjectname}}</option>
+                                    <option [value]="s.id" *ngFor="let s of subjects">{{s.subjectname | uppercase}}
+                                    </option>
                                 </select>
                             </div>
 
@@ -87,18 +89,16 @@
                                 <tbody class="text-sm">
                                     <tr *ngFor="let s of students; let i= index" class="text-center">
                                         <td>{{i+1}}</td>
-                                        <td>{{s.fullname | uppercase}}</td>
+                                        <td class="text-start">{{s.fullname | uppercase}}</td>
                                         <td>{{s.roll}}</td>
                                         <td>{{s.gender}}</td>
                                         <td>{{s.mobile}}</td>
                                         <td>{{s.address}}</td>
                                         <td class="text-center space-x-3">
-                                            <i (click)="edit(s)"
-                                                class='bx bx-edit text-indigo-600 text-md cursor-pointer'></i>
+
                                             <i (click)="view(s)"
-                                                class='bx bx-plus-circle text-green-600 text-md cursor-pointer'></i>
-                                            <i (click)="delete(s)"
-                                                class='bx bx-trash text-red-700 text-md cursor-pointer font-semibold'></i>
+                                                class='bx bx-plus-circle text-xl text-green-600 text-md cursor-pointer'></i>
+
                                         </td>
                                     </tr>
                                 </tbody>

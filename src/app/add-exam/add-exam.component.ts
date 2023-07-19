@@ -32,10 +32,6 @@ export class AddExamComponent implements OnInit {
     private location: Location) { }
 
   ngOnInit(): void {
-    // this.id = this.route.snapshot.queryParams['id']
-
-
-
     this.initForm()
     this.route.params.subscribe((params: Params) => {
       this.id = params['id']
@@ -47,7 +43,7 @@ export class AddExamComponent implements OnInit {
     } else {
       this.editMode = false
     }
-    // console.log(this.addClassForm.controls['classname'].setValue(this.class.classname));
+
   }
 
   initForm() {

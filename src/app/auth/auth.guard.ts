@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
             return true
         } else {
             this.toast.error('Your are not authorized! Plase login login ');
-            this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } });
+            this.router.navigate(['/auth/login']);
             return false;
         }
     }

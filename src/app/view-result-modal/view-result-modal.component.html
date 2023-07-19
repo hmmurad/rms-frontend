@@ -1,0 +1,69 @@
+<button class="px-2 m-2 mr-auto border rounded-full" mat-button mat-dialog-close>X</button>
+<div class="w-full ">
+    <div class="px-4 pb-3">
+        <div class=" border-b-[1px] border-slate-200 py-3 text-center">
+            <h2 class="text-2xl font-medium ">Institute of Information Technology</h2>
+            <h2 class="text-xl font-medium ">Jahangirnagar University</h2>
+        </div>
+        <div class="text-center flex-col flex py-2">
+            <span class="text-2xl font-semibold">{{this.data.fullname}}</span>
+            <span class="text-gray-600">Batch: PGDIT-18</span>
+            <span class="text-gray-600">Roll: {{this.data.roll}}</span>
+        </div>
+        <!-- <div class="py-2 px-4 flex justify-start items-center gap-2 text-gray-400 antialiased">
+            <a routerLink="/" class="hover:font-medium hover:no-underline hover:text-gray-800">
+                <i class='bx bx-home mr-2'></i>
+                <span>Home</span>
+            </a> /
+            <span>Classes</span> /
+            <span>Manage Classes</span>
+        </div> -->
+    </div>
+    <div class="bg-gray-100 p-4 h-screen">
+        <div class="flex justify-center items-center">
+            <div class="w-full rounded-md bg-white shadow-sm py-4 px-3">
+                <h4 class="text-base leading-6 font-medium">View Result Details</h4>
+                <table class="table table-bordered table-success text-center">
+                    <thead>
+                        <tr>
+                            <th>ser</th>
+                            <th>Subject</th>
+                            <th>Attendance</th>
+                            <th>Tutorial</th>
+                            <th>Assignment</th>
+                            <th>Written</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let m of IMarks; let i=index">
+                            <td>1</td>
+                            <td>Networking</td>
+                            <td>{{m.attendance}}</td>
+                            <td>{{m.tutorial}}</td>
+                            <td>{{m.assignment}}</td>
+                            <td>{{m.written}}</td>
+                            <td>{{this.totalMarks[i]}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" class="colspan-4">Total Marks</td>
+                            <td>{{this.grandTotal}}</td>
+                        </tr>
+                        <tr>
+
+                            <td colspan="2" class="colspan-4">Average</td>
+                            <td>{{this.averageMarks}} %</td>
+                            <td colspan="3" class="colspan-4">Grade</td>
+
+                            <!-- <td ngSwitch="style">
+                                <span *ngSwitchCase="'color'">color</span>
+                                <span *ngSwitchCase="'style'">style</span>
+                            </td> -->
+                            <td>{{this.gradePoint}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from '../shared/models/subject';
 import { Student } from '../shared/models/student';
-import { StudentService } from '../shared/services/student.service';
-import { BehaviorSubject } from 'rxjs';
 import { ClassService } from '../shared/services/class.service';
+import { StudentService } from '../shared/services/student.service';
 
 @Component({
   selector: 'app-manage-students',
@@ -40,11 +38,8 @@ export class ManageStudentsComponent implements OnInit {
     this.studentService.getAll().subscribe((res) => {
       this.students = res
       console.log(res);
-
     })
   }
-
-
 
   onchange(event: Event) {
     this.selectedClassId = (event.target as HTMLSelectElement).value
@@ -54,11 +49,6 @@ export class ManageStudentsComponent implements OnInit {
   showall() {
     this.getAll()
   }
-
-  
-
-
-
 
   onEdit(data: Student) {
     this.router.navigate(['edit-student', data.id])
@@ -75,7 +65,6 @@ export class ManageStudentsComponent implements OnInit {
   view(s: Student) {
     this.router.navigate(['student', s.id])
     console.log(s);
-
   }
 
   onchangeClass(event: Event) {

@@ -17,14 +17,13 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.userStoreService.getUserFromStore().subscribe(
+    this.authService.getUserFromStore().subscribe(
       res => {
         const userFromAuth = this.authService.getUserFromToken().user
         this.user = res || userFromAuth
+        // console.log(this.user);
       }
     )
-
-
   }
 
 

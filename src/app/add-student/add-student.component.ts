@@ -30,7 +30,6 @@ export class AddStudentComponent implements OnInit {
   editMode: boolean = false;
   student!: Student
   id!: number;
-  // departmentId = this.addForm.controls['departmentId'].value
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -38,12 +37,14 @@ export class AddStudentComponent implements OnInit {
     private location: Location) { }
 
   ngOnInit(): void {
-    // this.id = this.route.snapshot.queryParams['id']
     this.initForm()
     this.route.params.subscribe((params: Params) => {
       this.id = params['id']
     })
-    this.getSubject()
+
+    console.log(this.id);
+
+    this.getStudentById(this.id)
     this.getAll()
 
     if (this.id) {
@@ -51,7 +52,6 @@ export class AddStudentComponent implements OnInit {
     } else {
       this.editMode = false
     }
-    // console.log(this.addClassForm.controls['classname'].setValue(this.class.classname));
   }
 
   getAll() {
@@ -78,27 +78,27 @@ export class AddStudentComponent implements OnInit {
 
   }
 
-  getSubject() {
-    if (this.id !== undefined || null) {
-      this.studentService.getById(this.id).subscribe(
-        (res) => {
-          console.log(res);
-          this.student = res
-          this.editMode = true
-          this.addForm.controls['fullname'].setValue(this.student.fullname)
-          this.addForm.controls['roll'].setValue(this.student.roll)
-          this.addForm.controls['email'].setValue(this.student.email)
-          this.addForm.controls['gender'].setValue(this.student.gender)
-          this.addForm.controls['mobile'].setValue(this.student.mobile)
-          this.addForm.controls['dob'].setValue(this.student.dob)
-          this.addForm.controls['address'].setValue(this.student.address)
-          this.addForm.controls['departmentId'].setValue(this.student.departmentId)
-          this.addForm.controls['classId'].setValue(this.student.classId)
-          this.addForm.controls['sessionId'].setValue(this.student.sessionId)
-          this.addForm.controls['status'].setValue(this.student.status)
-        }
-      )
-    }
+  getStudentById(id: any) {
+
+    this.studentService.getById(id).subscribe(
+      (res) => {
+        console.log(res);
+        this.student = res
+        this.editMode = true
+        this.addForm.controls['fullname'].setValue(this.student.fullname)
+        this.addForm.controls['roll'].setValue(this.student.roll)
+        this.addForm.controls['email'].setValue(this.student.email)
+        this.addForm.controls['gender'].setValue(this.student.gender)
+        this.addForm.controls['mobile'].setValue(this.student.mobile)
+        this.addForm.controls['dob'].setValue(this.student.dob)
+        this.addForm.controls['address'].setValue(this.student.address)
+        this.addForm.controls['departmentId'].setValue(this.student.departmentId)
+        this.addForm.controls['classId'].setValue(this.student.classId)
+        this.addForm.controls['sessionId'].setValue(this.student.sessionId)
+        this.addForm.controls['status'].setValue(this.student.status)
+      }
+    )
+
   }
 
   save() {

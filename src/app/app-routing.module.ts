@@ -26,6 +26,7 @@ import { ManageTeacherComponent } from './manage-teacher/manage-teacher.componen
 import { RoleGuard } from './shared/guards/roles.guard';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
+import { ViewResultModalComponent } from './view-result-modal/view-result-modal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -171,12 +172,18 @@ const routes: Routes = [
         canActivate: [RoleGuard],
         data: { role: 'Admin' },
       },
+      {
+        path: 'view-results/:id',
+        component: ViewResultModalComponent,
+        canActivate: [RoleGuard],
+        data: { role: 'Admin' },
+      },
       { path: 'add-marks', component: AddMarksComponent },
       {
         path: 'manage-marks',
         component: ManageMarksComponent,
-        canActivate: [RoleGuard],
-        data: { role: 'Admin' },
+        // canActivate: [RoleGuard],
+        // data: { role: 'Admin' },
       },
       {
         path: 'add-exam',

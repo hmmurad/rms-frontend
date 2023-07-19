@@ -36,19 +36,23 @@
                                 <input type="text" class="form-control  px-2 py-1">
                             </div>
 
-                            <!-- <div class="flex justify-start items-center gap-1">
+                            <div class="flex justify-start items-center gap-1">
                                 <label>Sort By:</label>
-                                <select class="form-select px-2 py-1 w-20" (change)="onchangeClass($event)">
-                                    <option value=""> select</option>
-                                    <option class="text-sm" [value]="c.id" *ngFor="let c of classes$ | async">
-                                        {{c.classname | uppercase}}</option>
+                                <a class="cursor-pointer btn btn-outline-success px-2 py-1 text-sm rounded-sm my-3 font-medium"
+                                    (click)="showall()">Show All</a>
+                                <select class="form-select px-2 py-1 w-20 text-sm" (change)="onchange($event)">
+
+                                    <option [value]="">Select</option>
+                                    <option [value]="c.id" *ngFor="let c of classes$ | async">{{c.classname |
+                                        uppercase}}</option>
+
                                 </select>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                     <ng-container *ngIf="this.marks?.length<=0">
                         <p class="mt-3 font-medium text-xl text-center">
-                            No Subjects found!
+                            No marks found in the selected class!
 
                         </p>
                     </ng-container>

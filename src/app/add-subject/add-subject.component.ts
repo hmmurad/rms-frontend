@@ -10,6 +10,7 @@ import { ClassService } from '../shared/services/class.service';
 import { TeacherService } from '../shared/services/teacher.service';
 import { Teacher } from '../shared/models/teacher';
 import { Class } from '../shared/models/class';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-subject',
@@ -31,6 +32,7 @@ export class AddSubjectComponent implements OnInit {
     private subjectService: SubjectService,
     private classService: ClassService,
     private teacherService: TeacherService,
+    private toaster: ToastrService,
     private location: Location) { }
 
   ngOnInit(): void {
@@ -51,7 +53,7 @@ export class AddSubjectComponent implements OnInit {
 
   initForm() {
     if (this.editMode) {
-      this.addForm.controls['classname'].setValue(this.subject.subjectname)
+      // this.addForm.controls['classname'].setValue(this.subject.subjectname)
     } else {
       this.addForm = this.fb.group({
         subjectname: [],
@@ -90,9 +92,12 @@ export class AddSubjectComponent implements OnInit {
     console.log(this.addForm.value);
     this.subjectService.create(this.addForm.value).subscribe((res) => {
       console.log(res);
+      this.toaster.success('Succes', 'Create')
+
       this.addForm.reset()
     },
       (err) => {
+        this.toaster.success('Succes', 'Create')
         console.log(err);
 
       })
@@ -101,6 +106,7 @@ export class AddSubjectComponent implements OnInit {
 
   update() {
     this.subjectService.update(this.id, this.addForm.value).subscribe((res) => {
+      this.toaster.success('Succes', 'Create')
       console.log(res);
       this.addForm.reset()
     })

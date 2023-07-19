@@ -13,19 +13,16 @@ export class SidebarComponent implements OnInit {
   constructor(private authService: AuthService, private userStoreService: UserStoreService) { }
 
   ngOnInit(): void {
-    this.userStoreService.getUserFromStore().subscribe(
+    this.authService.getUserFromStore().subscribe(
       res => {
+
+
         const userFromAuth = this.authService.getUserFromToken().user
         this.user = res || userFromAuth
+        // console.log(this.user);
       }
     )
-    this.userStoreService.getUserFromStore().subscribe(
-      res => {
-        const roles = this.authService.getUserFromToken().user.roles
-        console.log(res, roles);
 
-      }
-    )
 
 
 

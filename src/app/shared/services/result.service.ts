@@ -22,24 +22,6 @@ export class ResultService {
     }
 
 
-    getAll(): Observable<Student[]> {
-        return this.http.get<Student[]>(`${this.url}`).pipe(tap(
-            res => {
-                const std = Array.from(new Set(res.map((item: any) => item.studentId)))
-                console.log(std);
 
-                for (let i = 0; i < std.length; i++) {
-                    this.studentService.getById(std[i]).subscribe(
-                        resData => {
-                            console.log(resData);
-
-                        }
-                    )
-                }
-
-
-            }
-        ))
-    }
 
 }

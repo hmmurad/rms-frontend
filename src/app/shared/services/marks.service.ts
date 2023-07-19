@@ -29,9 +29,9 @@ export class MarksService {
         return this.http.get(`${this.url}/` + 'student' + '/' + studentId)
     }
 
-    getMarksByStudentId(studentId: any) {
+    getMarksByStudentId(studentId: any): Observable<any[]> {
         const params = new HttpParams().set('student', studentId)
-        return this.http.get(`${this.url}`, { params })
+        return this.http.get<any[]>(`${this.url}`, { params })
     }
     getMarksByClassId(classId: any) {
         const params = new HttpParams().set('class', classId)

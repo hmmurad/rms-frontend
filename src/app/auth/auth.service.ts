@@ -13,6 +13,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
 
+  private user$ = new BehaviorSubject<any>(null)
+
 
   private httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -22,8 +24,9 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {
     this.userPayload = this.decodeToken()
-  }
+    // console.log(this.decodeToken());
 
+  }
 
 
   signup(user: User): Observable<{ token: string }> {
@@ -35,12 +38,23 @@ export class AuthService {
     return this.http.post<any>(`http://localhost:3000/auth/signin`, loginUser, this.httpOptions)
       .pipe(
         take(1),
-        tap((response: { token: string }) => {
-          console.log(response);
+        tap((response: { token: string, user: any }) => {
+          // console.log(response);
+          this.user$.next(response.user)
+          this.storeToken(response.token)
 
         }),
       )
   }
+  public setUser(user: any) {
+    this.user$.next(user)
+  }
+
+
+  public getUserFromStore() {
+    return this.user$.asObservable()
+  }
+
 
   storeToken(token: string) {
     localStorage.setItem('token', token)
@@ -57,7 +71,18 @@ export class AuthService {
   decodeToken() {
     const jwtHelper = new JwtHelperService()
     const token = this.getToken()!
+    // console.log(token);
+    if (jwtHelper.isTokenExpired(token)) {
+      this.logout()
+    }
     return jwtHelper.decodeToken(token)
+  }
+
+  isTokenExpired() {
+    const jwtHelper = new JwtHelperService()
+    const token = this.getToken()!
+    console.log(token);
+    return jwtHelper.isTokenExpired(token)
   }
 
   getUserFromToken() {
@@ -66,11 +91,8 @@ export class AuthService {
     }
   }
 
-
-
-
   logout(): void {
-    localStorage.removeItem('token')
+    localStorage.clear()
     this.router.navigateByUrl('/auth/login');
   }
 

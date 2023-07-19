@@ -9,6 +9,8 @@ import { ResultService } from '../shared/services/result.service';
 import { MarksService } from '../shared/services/marks.service';
 import { ClassService } from '../shared/services/class.service';
 import { ExamService } from '../shared/services/exam.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ViewResultModalComponent } from '../view-result-modal/view-result-modal.component';
 
 @Component({
   selector: 'app-manage-result',
@@ -20,42 +22,23 @@ export class ManageResultComponent implements OnInit {
   students: Student[] = []
   exams: any
   classes: any
+  className: any
   selectedClassId: any
   selectedExamId: any
 
   constructor(
     private studentService: StudentService,
-    private resultService: ResultService,
-    private marksService: MarksService,
     private classService: ClassService,
-    private examService: ExamService,
-
-
+    private matDialog: MatDialog,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.getAllMarks()
-    this.getAll()
     this.getClasses()
-    this.getExams()
   }
 
-  getAll() {
-    this.studentService.getAll().subscribe((res) => {
-      this.students = res
-      // console.log(res);
 
-    })
-  }
 
-  getExams() {
-    this.examService.getAll().subscribe(
-      res => {
-        this.exams = res
-      }
-    )
-  }
   getClasses() {
     this.classService.getAll().subscribe(
       res => {
@@ -64,40 +47,22 @@ export class ManageResultComponent implements OnInit {
     )
   }
 
-  getAllMarks() {
-    this.marksService.getAll().subscribe(
+  getStudentsByClass(classId: any) {
+    this.studentService.getStdByClassId(classId).subscribe(
       res => {
-        console.log(res);
+        this.students = res
 
       }
     )
   }
-
-  getMarksByClassId(classId?: any) {
-    this.marksService.getMarksByClassId(classId).subscribe(
-      res => {
-        console.log(res);
-
-      }
-    )
-  }
-  getMarksByExamId(examId?: any) {
-    this.marksService.getMarksByExamId(examId).subscribe(
-      res => {
-        console.log(res);
-
-      }
-    )
-  }
-
-  onchangeExam(event: Event) {
-    this.selectedExamId = (event.target as HTMLSelectElement).value
-    this.getMarksByExamId(this.selectedExamId)
-  }
+  // onchangeExam(event: Event) {
+  //   this.selectedExamId = (event.target as HTMLSelectElement).value
+  //   this.getMarksByExamId(this.selectedExamId)
+  // }
 
   onchangeClasses(event: Event) {
     this.selectedClassId = (event.target as HTMLSelectElement).value
-    this.getMarksByClassId(this.selectedClassId)
+    this.getStudentsByClass(this.selectedClassId)
   }
 
 
@@ -109,13 +74,15 @@ export class ManageResultComponent implements OnInit {
     this.studentService.delete(data.id).subscribe((res: any) => {
       window.alert('Do you want to delete?')
       // console.log(res);
-      this.getAll()
+      // this.getStudentsByClass()
     })
   }
 
   view(s: Student) {
-    this.router.navigate(['student', s.id])
-    // console.log(s);
+    this.matDialog.open(ViewResultModalComponent, {
+      data: s,
+      width: '80%'
+    })
 
   }
 }
