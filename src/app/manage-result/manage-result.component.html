@@ -18,21 +18,34 @@
                 <h4 class="text-base leading-6 font-medium">Manage Results</h4>
                 <div class="flex justify-between items-start gap-3 pt-3">
                     <div class="w-1/4 text-gray-800 border rounded-md p-3">
-                        <!-- <div>
+                        <div>
                             <label class="form-label text-sm">By Exam</label>
-                            <select class="form-select text-sm" (change)="onchangeExam($event)">
+                            <select class="form-select text-sm" (change)="onchange($event)">
                                 <option value="">Please select class</option>
                                 <option [value]="exam.id" *ngFor="let exam of exams">{{exam.examname}}</option>
                             </select>
-                        </div> -->
+                        </div>
                         <div>
                             <label class="form-label text-sm">By Class</label>
                             <select class="form-select text-sm" (change)="onchangeClasses($event)">
                                 <option value="">Please select class</option>
                                 <option [value]="class.id" *ngFor="let class of classes ; let i=index">
-                                    {{class.classname}}</option>
+                                    {{class.classname | uppercase}}</option>
                             </select>
                         </div>
+                        <div class="flex justify-start items-center gap-1">
+                            <label>Sort By:</label>
+                            <a class="cursor-pointer btn btn-outline-success px-2 py-1 text-sm rounded-sm my-3 font-medium"
+                                (click)="showall()">Show All</a>
+                            <select class="form-select px-2 py-1 w-20 text-sm" (change)="onchange($event)">
+
+                                <option [value]="">Select</option>
+                                <option [value]="c.id" *ngFor="let c of exams">{{c.examname |
+                                    uppercase}}</option>
+
+                            </select>
+                        </div>
+
                     </div>
                     <div class="w-3/4">
                         <div class="flex justify-between items-center">
@@ -44,6 +57,18 @@
                                     <option value="">1</option>
                                 </select>
                                 <span>entries</span>
+                            </div>
+                            <div class="flex justify-start items-center gap-1">
+                                <label>Sort By:</label>
+                                <a class="cursor-pointer btn btn-outline-success px-2 py-1 text-sm rounded-sm my-3 font-medium"
+                                    (click)="showall()">Show All</a>
+                                <select class="form-select px-2 py-1 w-20 text-sm" (change)="onchange($event)">
+
+                                    <option [value]="">Select</option>
+                                    <option [value]="c.id" *ngFor="let c of exams">{{c.examname |
+                                        uppercase}}</option>
+
+                                </select>
                             </div>
                             <div class="flex justify-start items-center gap-2 text-sm">
                                 <span>Search:</span>

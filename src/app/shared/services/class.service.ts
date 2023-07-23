@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Class } from '../models/class';
 import { Observable } from 'rxjs';
+import { Class } from '../models/class';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,11 @@ import { Observable } from 'rxjs';
 export class ClassService {
 
   constructor(private http: HttpClient) { }
+
+
+  create(data: Class) {
+    return this.http.post<Class>(`http://localhost:3000/classes`, data)
+  }
 
 
   getAll() {
@@ -25,9 +30,7 @@ export class ClassService {
     return this.http.get<Class[]>(`http://localhost:3000/classes`, { params })
   }
 
-  create(data: Class) {
-    return this.http.post(`http://localhost:3000/classes`, data)
-  }
+
 
   update(id: number, data: Class) {
     return this.http.patch(`http://localhost:3000/classes/${id}`, data)

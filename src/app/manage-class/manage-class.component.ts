@@ -40,9 +40,12 @@ export class ManageClassComponent implements OnInit {
 
   delete(data: any) {
     this.classService.delete(data.id).subscribe((res: any) => {
-      window.alert('Do you want to delete?')
-      console.log(res);
+      this.toaster.success("Successfully deleted", res.message)
       this.getAllClasses()
-    })
+    },
+      err => {
+        console.log(err);
+
+      })
   }
 }

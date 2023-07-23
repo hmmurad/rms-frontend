@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddMarksModalComponent } from '../add-marks-modal/add-marks-modal.component';
 import { EditMarksModalComponent } from '../edit-marks-modal/edit-marks-modal.component';
 import { ClassService } from '../shared/services/class.service';
+import { SubjectService } from '../shared/services/subject.service';
 
 @Component({
   selector: 'app-manage-marks',
@@ -14,11 +15,14 @@ import { ClassService } from '../shared/services/class.service';
 export class ManageMarksComponent implements OnInit {
 
   selectedClassId: any;
+  selectedSubjectId: any;
   marks: any
   classes$ = this.classService.getAll()
+  subjects$ = this.subjectService.getAll()
   totalMarks: any[] = []
   constructor(private marksService: MarksService,
     private classService: ClassService,
+    private subjectService: SubjectService,
     private matdialog: MatDialog
   ) { }
 
@@ -44,22 +48,40 @@ export class ManageMarksComponent implements OnInit {
   }
   delete(s: any) { }
 
-  onchange(event: Event) {
+  onchangeClass(event: Event) {
     this.selectedClassId = (event.target as HTMLSelectElement).value
-    this.getMarksByClassId(this.selectedClassId)
+    this.getMarksClassId(this.selectedClassId)
+  }
+  onchangeSub(event: Event) {
+    this.selectedSubjectId = (event.target as HTMLSelectElement).value
+    // this.getMarksByClassIdAndSubjectId(this.selectedClassId, this.selectedSubjectId)
+    this.getMarksSubjectId(this.selectedSubjectId)
   }
   showall() {
     this.getAllMarks()
   }
 
-
-
-  getMarksByClassId(classId: any) {
+  getMarksClassId(classId: any) {
     this.marksService.getMarksByClassId(classId).subscribe(
+      res => this.marks = res
+    )
+  }
+  getMarksSubjectId(subjectId: any) {
+    this.marksService.getMarksBySubjectId(subjectId).subscribe(
+      res => this.marks = res
+    )
+  }
+
+  getMarksByClassIdAndSubjectId(classId: any, subjectId: any) {
+    this.marksService.getMarksByClassIdAndSubjectId(classId, subjectId).subscribe(
       res => {
         this.marks = res
       }
     )
+  }
+
+  filter() {
+    this.getMarksByClassIdAndSubjectId(this.selectedClassId, this.selectedSubjectId)
   }
 
 

@@ -46,10 +46,10 @@
 
                     <div class="mt-4 flex justify-between items-center">
                         <div class="flex gap-3">
-                            <button type="submit" [disabled]="!this.addClassForm.valid"
+                            <button type="submit"
                                 class="btn btn-outline-success px-4 text-sm rounded-sm font-medium">{{this.editMode ?
                                 'Update' : 'Save'}}</button>
-                            <button (click)="cancel()"
+                            <button (click)="cancel()" type="button"
                                 class="btn btn-outline-primary px-4 text-sm rounded-sm font-medium">Cancel</button>
 
                         </div>

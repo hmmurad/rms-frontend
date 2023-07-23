@@ -28,7 +28,7 @@
                                 <option value="">1</option>
                                 <option value="">1</option>
                             </select>
-                            <span>entries</span>
+                            <span *ngIf="marks">entries: {{this.marks.length}}</span>
                         </div>
                         <div class="flex justify-start items-center gap-2 text-sm">
                             <div class="flex justify-start items-center gap-2">
@@ -40,13 +40,23 @@
                                 <label>Sort By:</label>
                                 <a class="cursor-pointer btn btn-outline-success px-2 py-1 text-sm rounded-sm my-3 font-medium"
                                     (click)="showall()">Show All</a>
-                                <select class="form-select px-2 py-1 w-20 text-sm" (change)="onchange($event)">
+                                <select class="form-select px-2 py-1 w-20 text-sm" (change)="onchangeClass($event)">
 
                                     <option [value]="">Select</option>
                                     <option [value]="c.id" *ngFor="let c of classes$ | async">{{c.classname |
                                         uppercase}}</option>
 
                                 </select>
+                                <select class="form-select px-2 py-1 w-20 text-sm" (change)="onchangeSub($event)">
+
+                                    <option [value]="">Select</option>
+                                    <option [value]="c.id" *ngFor="let c of subjects$ | async">{{c.subjectname |
+                                        uppercase}}</option>
+
+                                </select>
+                                <a class="flex items-center gap-2 cursor-pointer btn btn-outline-success px-2 py-1 text-sm rounded-sm my-3 font-medium"
+                                    (click)="filter()"><i class='font-semibold bx bx-filter-alt'></i>
+                                    <span>Apply Subject Filter</span></a>
                             </div>
                         </div>
                     </div>

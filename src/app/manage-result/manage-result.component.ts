@@ -25,17 +25,28 @@ export class ManageResultComponent implements OnInit {
   className: any
   selectedClassId: any
   selectedExamId: any
+  showList: any = false
 
   constructor(
     private studentService: StudentService,
     private classService: ClassService,
+    private marksService: MarksService,
+    private examService: ExamService,
     private matDialog: MatDialog,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.getClasses()
+    this.getExams()
   }
+
+  getExams() {
+    this.examService.getAll().subscribe(
+      res => this.exams = res
+    )
+  }
+
 
 
 
@@ -47,11 +58,15 @@ export class ManageResultComponent implements OnInit {
     )
   }
 
+
+
   getStudentsByClass(classId: any) {
+
+
     this.studentService.getStdByClassId(classId).subscribe(
       res => {
-        this.students = res
 
+        this.students = res
       }
     )
   }
@@ -63,6 +78,7 @@ export class ManageResultComponent implements OnInit {
   onchangeClasses(event: Event) {
     this.selectedClassId = (event.target as HTMLSelectElement).value
     this.getStudentsByClass(this.selectedClassId)
+
   }
 
 
@@ -85,6 +101,9 @@ export class ManageResultComponent implements OnInit {
     })
 
   }
+
+  onchange(event: Event) { }
+  showall() { }
 }
 
 

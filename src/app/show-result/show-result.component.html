@@ -5,25 +5,17 @@
             <h2 class="text-2xl font-medium ">Institute of Information Technology</h2>
             <h2 class="text-xl font-medium ">Jahangirnagar University</h2>
         </div>
-        <div class="text-center flex-col flex py-2">
-            <span class="text-2xl font-semibold">{{this.data.fullname}}</span>
+        <div class="text-center flex-col flex py-2" *ngIf="student">
+            <span class="text-2xl font-semibold">{{student.fullname}}</span>
             <span class="text-gray-600">Batch: PGDIT-18</span>
-            <span class="text-gray-600">Roll: {{this.data.roll}}</span>
+            <span class="text-gray-600">Roll: {{student.roll}}</span>
         </div>
-        <!-- <div class="py-2 px-4 flex justify-start items-center gap-2 text-gray-400 antialiased">
-            <a routerLink="/" class="hover:font-medium hover:no-underline hover:text-gray-800">
-                <i class='bx bx-home mr-2'></i>
-                <span>Home</span>
-            </a> /
-            <span>Classes</span> /
-            <span>Manage Classes</span>
-        </div> -->
     </div>
     <div class="bg-gray-100 p-4 h-screen">
         <div class="flex justify-center items-center">
             <div class="w-full rounded-md bg-white shadow-sm py-4 px-3">
                 <h4 class="text-base leading-6 font-medium">View Result Details</h4>
-                <table class="table table-bordered table-success text-center">
+                <table class="table table-bordered table-success text-center my-3">
                     <thead>
                         <tr>
                             <th>ser</th>
@@ -46,20 +38,15 @@
                             <td>{{m.written}}</td>
                             <td>{{this.totalMarks[i]}}</td>
                         </tr>
-                        <tr>
-                            <td colspan="6" class="colspan-4">Total Marks</td>
+                        <tr class="font-medium">
+                            <td colspan="6">Total Marks</td>
                             <td>{{this.grandTotal}}</td>
                         </tr>
-                        <tr>
+                        <tr class="font-medium">
 
-                            <td colspan="2" class="colspan-4">Average</td>
+                            <td colspan="2">Average</td>
                             <td>{{this.averageMarks}} %</td>
-                            <td colspan="3" class="colspan-4">Grade</td>
-
-                            <!-- <td ngSwitch="style">
-                                <span *ngSwitchCase="'color'">color</span>
-                                <span *ngSwitchCase="'style'">style</span>
-                            </td> -->
+                            <td colspan="3">Grade</td>
                             <td>{{this.gradePoint}}</td>
                         </tr>
                     </tbody>

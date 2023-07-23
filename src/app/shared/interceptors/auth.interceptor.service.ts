@@ -25,10 +25,13 @@ export class AuthInterceptor implements HttpInterceptor {
                 if (err instanceof HttpErrorResponse) {
                     if (err.status === 401) {
                         this.router.navigate(['/auth/login'])
-                        this.toaster.warning('Token expired , please login again!', 'Warning')
+                        this.toaster.warning(err.statusText, err.name)
+                    }
+                    if (err.status === 400) {
+                        this.toaster.warning(err.message, "Http Error Response")
                     }
                 }
-                return throwError(() => new Error('Something wrong occured!'))
+                return throwError(() => err)
 
             })
         )

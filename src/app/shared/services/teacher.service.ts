@@ -15,15 +15,15 @@ export class TeacherService {
         return this.http.get<any[]>(`${this.url}`)
     }
 
-    getById(id: number): Observable<Teacher> {
-        return this.http.get<Teacher>(`${this.url}/` + id)
+    getById(id: number): Observable<any> {
+        return this.http.get<any>(`${this.url}/` + id)
     }
 
-    create(data: Teacher) {
+    create(data: any) {
         return this.http.post(`${this.url}`, data)
     }
 
-    update(id: number, data: Teacher) {
+    update(id: number, data: any) {
         return this.http.patch(`${this.url}/${id}`, data)
     }
 

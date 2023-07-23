@@ -1,1 +1,58 @@
-<p>view-profile-modal works!</p>
+<button class="px-2 m-2 mr-auto border rounded-full" mat-button mat-dialog-close>X</button>
+<div class="w-full ">
+    <div class="px-4 pb-3">
+        <div class=" border-b-[1px] border-slate-200 py-3 text-center">
+            <h2 class="text-2xl font-medium ">Institute of Information Technology</h2>
+            <h2 class="text-xl font-medium ">Jahangirnagar University</h2>
+        </div>
+        <!-- <div class="text-center flex-col flex py-2" *ngIf="student">
+            <span class="text-2xl font-semibold">{{student.fullname}}</span>
+            <span class="text-gray-600">Batch: PGDIT-18</span>
+            <span class="text-gray-600">Roll: {{student.roll}}</span>
+        </div> -->
+    </div>
+    <div class="bg-gray-100 p-4 h-screen">
+        <div class="flex justify-center items-center">
+            <div class="w-full rounded-md bg-white shadow-sm py-2 px-3" *ngIf="user">
+                <div class="flex justify-between items-center">
+
+                    <h4 class="text-xl leading-6 font-medium">View Profile</h4>
+                    <button mat-dialog-close class="btn btn-outline-success px-4 text-xs rounded-sm my-3 font-medium"
+                        routerLink="/teachers/{{this.user.id}}">Edit Profile</button>
+                </div>
+                <div class="py-3">
+                    <div class="flex justify-start items-start gap-3">
+                        <div class="border-2 border-gray-900 rounded-full w-20 h-20 flex justify-center items-center">
+                            <i class='bx bx-user text-4xl'></i>
+                        </div>
+                        <div class="flex flex-col justify-start items-start">
+                            <h2 class="text-xl text-gray-900 font-medium">{{user.fullname}}</h2>
+                            <h2 class="text-xl text-gray-900 font-medium">{{user.roles}}</h2>
+                            <h2 class="text-xl text-gray-900 font-medium">{{user.email}}</h2>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-bordered table-success text-center my-3">
+                    <thead>
+                        <tr>
+                            <th>ser</th>
+                            <th>Subject</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let m of user.subjects; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{m.subjectname}}</td>
+                            <td>
+                                <button class="">
+                                    <i class='bx bx-edit text-xl'></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

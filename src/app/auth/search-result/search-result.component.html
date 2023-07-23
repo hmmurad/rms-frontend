@@ -1,0 +1,38 @@
+<div class="p-8">
+    <h2 class="text-2xl font-bold mb-6 text-center">Search Result</h2>
+    <form [formGroup]="form" (ngSubmit)="search()">
+        <div class="mb-3">
+            <label class="block mb-2">Student ID</label>
+            <input type="text" class="w-full px-4 py-2 border  focus:outline-none focus:ring-1 focus:ring-green-700"
+                formControlName="id" required>
+            <div *ngIf="id?.invalid && (id?.dirty || id?.touched)" class="text-red-600 mt-2">
+                <p *ngIf="id?.errors?.['required']">Student Id is required!</p>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <label class="block mb-2">Class</label>
+            <select class="form-control" required formControlName="classId">
+                <option value="">Please Select Your Class</option>
+                <option [value]="c.id" *ngFor="let c of classes$ | async">{{c.classname | uppercase}}</option>
+            </select>
+            <div *ngIf="classId?.invalid && (classId?.dirty || classId?.touched)" class="text-red-600 mt-2">
+                <p *ngIf="classId?.errors?.['required']">ClassId is required!</p>
+            </div>
+        </div>
+        <div class="mb-6">
+            <label class="block mb-2">Exam</label>
+            <select class="form-control" formControlName="examId">
+                <option value="">Please Select Exam</option>
+                <option [value]="e.id" *ngFor="let e of exams$ | async">{{e.examname | uppercase}}</option>
+            </select>
+            <div *ngIf="examId?.invalid && (examId?.dirty || examId?.touched)" class="text-red-600 mt-2">
+                <p *ngIf="examId?.errors?.['required']">Please Select an Exam!</p>
+            </div>
+        </div>
+        <button type="submit" [disabled]="!this.form.valid"
+            class="w-full btn btn-outline-success px-4 py-2 text-md rounded-sm font-medium mb-4">Search Result
+        </button>
+    </form>
+
+</div>

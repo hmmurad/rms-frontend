@@ -1,14 +1,16 @@
+
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MarksService } from '../shared/services/marks.service';
 import { SubjectService } from '../shared/services/subject.service';
+import { StudentService } from '../shared/services/student.service';
 
 @Component({
-  selector: 'app-view-result-modal',
-  templateUrl: './view-result-modal.component.html',
-  styleUrls: ['./view-result-modal.component.scss']
+  selector: 'app-show-result',
+  templateUrl: './show-result.component.html',
+  styleUrls: ['./show-result.component.scss']
 })
-export class ViewResultModalComponent implements OnInit {
+export class ShowResultComponent implements OnInit {
 
   IMarks: any
   totalMarks: any[] = [];
@@ -16,30 +18,36 @@ export class ViewResultModalComponent implements OnInit {
   averageMarks: any
   gradePoint: any = 'F'
   subject: any[] = []
+  student: any
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-    private markService: MarksService,
+    private studentService: StudentService,
     private subjectService: SubjectService
   ) {
 
   }
 
   ngOnInit(): void {
-    console.log(this.data);
-    this.markService.getMarksByStudentId(this.data.id).subscribe(
-      (res: any) => {
-        console.log(res);
 
-        for (let index = 0; index < res.length; index++) {
-          this.totalMarks[index] = res[index].attendance + res[index].tutorial + res[index].assignment + res[index].written;
-          this.getSubById(res[index].subjectId, index)
-          this.grandTotal += this.totalMarks[index]
-        }
-        this.IMarks = res
-        this.averageMarks = Number(this.grandTotal / res.length).toFixed(2)
-        this.grading(this.averageMarks)
+
+    console.log(this.data[0].studentId);
+    this.studentService.getById(this.data[0].studentId).subscribe(
+      res => {
+        console.log(res);
+        this.student = res
+
       }
     )
+    for (let index = 0; index < this.data.length; index++) {
+      this.totalMarks[index] = this.data[index].attendance + this.data[index].tutorial + this.data[index].assignment + this.data[index].written;
+      this.getSubById(this.data[index].subjectId, index)
+      this.grandTotal += this.totalMarks[index]
+    }
+
+
+    this.IMarks = this.data
+    this.averageMarks = Number(this.grandTotal / this.data.length).toFixed(2)
+    this.grading(this.averageMarks)
   }
 
   getSubById(id: any, index: number) {
@@ -67,6 +75,7 @@ export class ViewResultModalComponent implements OnInit {
     }
 
   }
+
 
 
 

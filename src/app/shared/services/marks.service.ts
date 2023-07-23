@@ -33,16 +33,24 @@ export class MarksService {
         const params = new HttpParams().set('student', studentId)
         return this.http.get<any[]>(`${this.url}`, { params })
     }
+    getMarksBySubjectId(subjectId: any): Observable<any[]> {
+        const params = new HttpParams().set('subject', subjectId)
+        return this.http.get<any[]>(`${this.url}`, { params })
+    }
     getMarksByClassId(classId: any) {
         const params = new HttpParams().set('class', classId)
+        return this.http.get(`${this.url}`, { params })
+    }
+    getMarksByClassIdAndSubjectId(classId: any, subjectId: any) {
+        const params = new HttpParams().set('class', classId).set('subject', subjectId)
         return this.http.get(`${this.url}`, { params })
     }
     getMarksByExamId(examId: any) {
         const params = new HttpParams().set('exam', examId)
         return this.http.get(`${this.url}`, { params })
     }
-    getMarksByStudentIdAndClassId(studentId: any, classId: any) {
-        const params = new HttpParams().set('student', studentId).set('class', classId)
+    getMarksByStudentIdAndClassIdExamId(studentId: any, classId: any, examId: any) {
+        const params = new HttpParams().set('student', studentId).set('class', classId).set('exam', examId)
         return this.http.get(`${this.url}`, { params })
     }
 

@@ -1,1 +1,57 @@
-<p>teacher-profile works!</p>
+<div class="w-full h-screen">
+    <div class="">
+        <div class="px-4 pb-3 border-b-[1px] border-slate-200">
+            <span class="text-2xl font-semibold">Add Class</span>
+        </div>
+        <div class="py-2 px-4 flex justify-start items-center gap-2 text-gray-400 antialiased">
+            <a routerLink="/" class="hover:font-medium hover:no-underline hover:text-gray-800">
+                <i class='bx bx-home mr-2'></i>
+                <span>Home</span>
+            </a> /
+            <a routerLink="/manage-class" class="hover:font-medium hover:no-underline hover:text-gray-800">
+                <span>Class</span>
+            </a> /
+            <span>Add Class</span>
+        </div>
+    </div>
+    <div class="bg-gray-100 p-4 h-screen">
+        <div class="flex justify-center items-center">
+            <div class="w-2/3 rounded-md bg-white shadow-sm py-4 px-3">
+                <h4 class="text-base leading-6 font-medium">Create Student Class</h4>
+                <form [formGroup]="form" (ngSubmit)="update()">
+                    <div class="my-3">
+                        <label class="form-label font-semibold">Create Class</label>
+                        <select class="form-select" formControlName="roles">
+                            <option class="font-medium" value="teacher.roles" *ngIf="teacher ">
+                                {{teacher.roles | uppercase}}
+                            </option>
+                            <option class="font-medium" value="Teacher">TEACHER</option>
+                        </select>
+
+                        <div class="text-red-500 bg-red-200 py-2 mt-1 px-3 rounded"
+                            *ngIf="this.form.controls['roles'].touched && this.form.controls['roles'].invalid">
+                            Class name required!
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="mt-4 flex justify-between items-center">
+                        <div class="flex gap-3">
+                            <button type="submit"
+                                class="btn btn-outline-success px-4 text-sm rounded-sm font-medium">Update</button>
+                            <button (click)="cancel()" type="button"
+                                class="btn btn-outline-primary px-4 text-sm rounded-sm font-medium">Cancel</button>
+
+                        </div>
+
+                        <button routerLink="/manage-class"
+                            class="btn btn-outline-primary px-4 text-sm rounded-sm font-medium">Manage
+                            Classes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

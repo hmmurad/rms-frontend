@@ -6,6 +6,8 @@ import { Class } from '../shared/models/class';
 import { ClassService } from '../shared/services/class.service';
 import { DepartmentService } from '../shared/services/department.service';
 import { Department } from '../shared/models/department';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-class',
@@ -19,18 +21,18 @@ export class AddClassComponent implements OnInit {
   editMode: boolean = false;
   class!: Class
   departments$ = this.deptService.getAll()
-  id!: number;
+  id!: number
+  message: any
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private classService: ClassService,
     private deptService: DepartmentService,
+    private toaster: ToastrService,
     private location: Location) { }
 
   ngOnInit(): void {
-    // this.id = this.route.snapshot.queryParams['id']
-
-    
+    this.id = 3
 
     this.initForm()
     this.route.params.subscribe((params: Params) => {
@@ -55,6 +57,7 @@ export class AddClassComponent implements OnInit {
         departmentId: []
       })
     }
+
   }
 
   getClass() {
@@ -80,9 +83,20 @@ export class AddClassComponent implements OnInit {
   }
 
   createClass() {
-    this.classService.create(this.addClassForm.value).subscribe((res) => {
-      console.log(res);
-      this.addClassForm.reset()
+    console.log(this.addClassForm.value);
+
+    this.classService.create(this.addClassForm.value).subscribe({
+      next: (res) => {
+        this.toaster.success('Class Added Successfully!', 'Success')
+        this.addClassForm.reset()
+      },
+      error: (err) => {
+        this.message = err.error.message
+
+        for (let index = 0; index < err.error.message.length; index++) {
+          this.toaster.info(err.error.message[index], 'Warning')
+        }
+      },
     })
   }
 
@@ -91,7 +105,12 @@ export class AddClassComponent implements OnInit {
     this.classService.update(this.id, this.addClassForm.value).subscribe((res) => {
       console.log(res);
       this.addClassForm.reset()
-    })
+      this.toaster.success('Class Updated Successfully!', 'Updated')
+    },
+      (err) => {
+        this.toaster.info(err.error.message, 'Info')
+
+      })
   }
 
   cancel() {
