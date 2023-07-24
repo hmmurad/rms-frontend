@@ -16,9 +16,7 @@ import { AddMarksComponent } from './add-marks/add-marks.component';
 import { AddResultComponent } from './add-result/add-result.component';
 import { AddSessionComponent } from './add-session/add-session.component';
 import { AddStudentComponent } from './add-student/add-student.component';
-import { AddSubjectCombinationComponent } from './add-subject-combination/add-subject-combination.component';
 import { AddSubjectComponent } from './add-subject/add-subject.component';
-import { AddTeacherComponent } from './add-teacher/add-teacher.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AuthModule } from './auth/auth.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -30,7 +28,6 @@ import { ManageExamComponent } from './manage-exam/manage-exam.component';
 import { ManageMarksComponent } from './manage-marks/manage-marks.component';
 import { ManageResultComponent } from './manage-result/manage-result.component';
 import { ManageStudentsComponent } from './manage-students/manage-students.component';
-import { ManageSubjectsCombinationComponent } from './manage-subjects-combination/manage-subjects-combination.component';
 import { ManageSubjectsComponent } from './manage-subjects/manage-subjects.component';
 import { ManageTeacherComponent } from './manage-teacher/manage-teacher.component';
 import { DropdownDirective } from './shared/directives/dropdown.directive';
@@ -61,14 +58,11 @@ import { ShowResultComponent } from './show-result/show-result.component';
     ManageClassComponent,
     AddSubjectComponent,
     ManageSubjectsComponent,
-    ManageSubjectsCombinationComponent,
-    AddSubjectCombinationComponent,
     AddDepartmentComponent,
     ManageDepartmentsComponent,
     AddStudentComponent,
     ManageStudentsComponent,
     StudentProfileComponent,
-    AddTeacherComponent,
     ManageTeacherComponent,
     TeacherProfileComponent,
     AddResultComponent,

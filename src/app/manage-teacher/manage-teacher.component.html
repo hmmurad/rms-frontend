@@ -15,10 +15,8 @@
     <div class="bg-gray-100 p-4 h-screen">
         <div class="flex justify-center items-center">
             <div class="w-full rounded-md bg-white shadow-sm py-4 px-3">
-                <h4 class="text-base leading-6 font-medium">Manage Teachers</h4>
-                <button class="btn btn-outline-success px-4 text-sm rounded-sm my-3 font-medium"
-                    routerLink="/add-student">Add New
-                    Teacher</button>
+                <h4 class="text-md mb-3 leading-6 font-medium">Manage Teachers</h4>
+
                 <div>
                     <div class="flex justify-between items-center">
                         <div class="flex justify-start items-center gap-2 text-sm">
@@ -55,8 +53,6 @@
                                     <td class="text-center space-x-3">
                                         <i (click)="onEdit(s)"
                                             class='bx bx-edit text-indigo-600 text-md cursor-pointer'></i>
-                                        <i (click)="view(s)"
-                                            class='bx bx-book-open text-green-600 text-md cursor-pointer'></i>
                                         <i (click)="delete(s)"
                                             class='bx bx-trash text-red-700 text-md cursor-pointer font-semibold'></i>
                                     </td>

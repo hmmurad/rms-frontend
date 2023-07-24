@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TeacherService } from '../shared/services/teacher.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-teacher-profile',
@@ -18,6 +19,7 @@ export class TeacherProfileComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private teacherService: TeacherService,
+    private location: Location
 
   ) { }
 
@@ -62,7 +64,7 @@ export class TeacherProfileComponent implements OnInit {
   }
 
   cancel() {
-
+    this.location.back()
   }
 
 }

@@ -74,7 +74,7 @@ export class AddSubjectComponent implements OnInit {
           this.addForm.controls['subjectname'].setValue(this.subject.subjectname)
           this.addForm.controls['code'].setValue(this.subject.code)
           this.addForm.controls['classId'].setValue(this.subject.classId)
-          this.addForm.controls['teacherId'].setValue(this.subject.teacherId)
+          this.addForm.controls['userId'].setValue(this.subject.userId)
         }
       )
     }

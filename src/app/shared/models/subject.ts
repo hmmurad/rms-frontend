@@ -4,5 +4,5 @@ export interface Subject {
     code: string;
     createdAt?: Date
     classId?: number
-    teacherId?: number
+    userId?: number
 }

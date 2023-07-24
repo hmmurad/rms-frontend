@@ -8,6 +8,9 @@ import { Student } from '../shared/models/student';
 import { StudentService } from '../shared/services/student.service';
 import { TeacherService } from '../shared/services/teacher.service';
 import { Teacher } from '../shared/models/teacher';
+import { MatDialog } from '@angular/material/dialog';
+import { TeacherProfileComponent } from '../teacher-profile/teacher-profile.component';
+import { ViewProfileModalComponent } from '../view-profile-modal/view-profile-modal.component';
 
 @Component({
   selector: 'app-manage-teacher',
@@ -20,7 +23,8 @@ export class ManageTeacherComponent implements OnInit {
 
   constructor(
     private teacherService: TeacherService,
-    private router: Router
+    private router: Router,
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +40,7 @@ export class ManageTeacherComponent implements OnInit {
   }
 
   onEdit(data: Teacher) {
-    this.router.navigate(['edit-student', data.id])
+    this.router.navigate(['edit-teacher', data.id])
   }
 
   delete(data: any) {
@@ -47,11 +51,7 @@ export class ManageTeacherComponent implements OnInit {
     })
   }
 
-  view(s: Teacher) {
-    this.router.navigate(['teacher', s.id])
-    console.log(s);
 
-  }
 }
 
 

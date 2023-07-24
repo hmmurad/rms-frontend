@@ -7,9 +7,7 @@ import { AddMarksComponent } from './add-marks/add-marks.component';
 import { AddResultComponent } from './add-result/add-result.component';
 import { AddSessionComponent } from './add-session/add-session.component';
 import { AddStudentComponent } from './add-student/add-student.component';
-import { AddSubjectCombinationComponent } from './add-subject-combination/add-subject-combination.component';
 import { AddSubjectComponent } from './add-subject/add-subject.component';
-import { AddTeacherComponent } from './add-teacher/add-teacher.component';
 import { AuthGuard } from './auth/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainComponent } from './main/main.component';
@@ -20,7 +18,6 @@ import { ManageMarksComponent } from './manage-marks/manage-marks.component';
 import { ManageResultComponent } from './manage-result/manage-result.component';
 import { ManageSessionComponent } from './manage-session/manage-session.component';
 import { ManageStudentsComponent } from './manage-students/manage-students.component';
-import { ManageSubjectsCombinationComponent } from './manage-subjects-combination/manage-subjects-combination.component';
 import { ManageSubjectsComponent } from './manage-subjects/manage-subjects.component';
 import { ManageTeacherComponent } from './manage-teacher/manage-teacher.component';
 import { RoleGuard } from './shared/guards/roles.guard';
@@ -77,18 +74,6 @@ const routes: Routes = [
         data: { role: 'Admin' },
       },
       {
-        path: 'add-sub-comb',
-        component: AddSubjectCombinationComponent,
-        canActivate: [RoleGuard],
-        data: { role: 'Admin' },
-      },
-      {
-        path: 'manage-sub-comb',
-        component: ManageSubjectsCombinationComponent,
-        canActivate: [RoleGuard],
-        data: { role: 'Admin' },
-      },
-      {
         path: 'add-department',
         component: AddDepartmentComponent,
         canActivate: [RoleGuard],
@@ -136,15 +121,10 @@ const routes: Routes = [
         canActivate: [RoleGuard],
         data: { role: 'Admin' },
       },
-      {
-        path: 'add-teacher',
-        component: AddTeacherComponent,
-        canActivate: [RoleGuard],
-        data: { role: 'Admin' },
-      },
+
       {
         path: 'edit-teacher/:id',
-        component: AddTeacherComponent,
+        component: TeacherProfileComponent,
         canActivate: [RoleGuard],
         data: { role: 'Admin' },
       },

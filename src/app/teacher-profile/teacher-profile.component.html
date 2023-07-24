@@ -17,7 +17,7 @@
     <div class="bg-gray-100 p-4 h-screen">
         <div class="flex justify-center items-center">
             <div class="w-2/3 rounded-md bg-white shadow-sm py-4 px-3">
-                <h4 class="text-base leading-6 font-medium">Create Student Class</h4>
+                <h4 class="text-base leading-6 font-medium">Update Teacher Role</h4>
                 <form [formGroup]="form" (ngSubmit)="update()">
                     <div class="my-3">
                         <label class="form-label font-semibold">Create Class</label>
@@ -30,7 +30,7 @@
 
                         <div class="text-red-500 bg-red-200 py-2 mt-1 px-3 rounded"
                             *ngIf="this.form.controls['roles'].touched && this.form.controls['roles'].invalid">
-                            Class name required!
+                            Teacher Role required!
                         </div>
                     </div>
 
@@ -46,9 +46,9 @@
 
                         </div>
 
-                        <button routerLink="/manage-class"
+                        <button routerLink="/manage-teachers"
                             class="btn btn-outline-primary px-4 text-sm rounded-sm font-medium">Manage
-                            Classes</button>
+                            Teachers</button>
                     </div>
                 </form>
             </div>
